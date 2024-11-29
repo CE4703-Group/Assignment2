@@ -36,6 +36,16 @@ Node* gotoNextNode(Node* node){
     }
 }
 
+Node* gotoPreviousNode(Node* node) {
+    if (node->prev == NULL) {
+        return node;
+    }
+    else {
+        return node->prev;
+    }
+}
+
+
 int main() {
   
     // Sample usage of the doubly linked list and
