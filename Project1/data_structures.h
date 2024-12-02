@@ -1,10 +1,142 @@
 #ifndef DATA_STRUCTURES_H
 #define DATA_STRUCTURES_H
-#include "data_structures.c"
 
-Node* createNode(int data);
-int getData(Node* node);
+
+// A linked list node
+/**
+ * @struct Node
+ * @brief Represents a node in a doubly linked list.
+ */
+typedef struct Node {
+    int data;            // Storing data in node
+    struct Node* next;   // Pointer to the next node
+    struct Node* prev;   // Pointer to the previous node
+} Node;
+
+
+// Double linked list structure
+/**
+ * @struct doubleLinkedList
+ * @brief Represents a doubly linked list structure.
+ */
+typedef struct doubleLinkedList {
+    Node* head;    // Pointer to the head
+    Node* tail;    // Pointer to the tail
+    Node* current; // Pointer to the current node
+} doubleLinkedList;
+
+/** 
+ * @brief this creates an empty list with a head and tail
+ * 
+ * @details 
+ * This going to allocate memory for the following: list, head & tail nodes.
+ * It is also going to initialise nodes and link the nodes together 
+ * 
+ * @return The empty list
+ * 
+ */
+doubleLinkedList* createDoubleLinkedList ();
+
+/**
+ * @brief 
+ * funvtion to delete the doubly linked list starting from the head and the memory allocated for each node is then freed. 
+ * 
+ *
+ * @param  head  a double pointer to the head node of the doubly linked list.
+ */
+doubleLinkedList* deleteDoubleLinkedList (Node** head);
+
+/**
+ * @brief Retrieves the data associated with current node.
+ *
+ * This function gets data associated with current node and returns its value.
+ *
+ * @param list A pointer to the double linked list where data of current node is to be retrieved.
+ * @return The data stored in the node.
+ */
+int getData(doubleLinkedList* list);
+
+/**
+ * @brief Sets current node to the successor of current.
+ *
+ * This function checks if the `next` pointer of the given node is `NULL`. If it is `NULL`, 
+ * it returns the current node. Otherwise, it sets current node to the successor of current.
+ *
+ * @param node A pointer to the current node.
+ * @return A pointer to the next node, or the current node if no next node exists.
+ */
 Node* gotoNextNode(Node* node);
+
+/**
+ * @brief Sets current node to the predecessor of current.
+ *
+ * This function checks if the `prev` pointer of the given node is `NULL`. If it is `NULL`, 
+ * it returns the current node. Otherwise, it sets current node to the predecessor of current.
+ *
+ * @param node A pointer to the current node.
+ * @return A pointer to the previous node, or the current node if no previous node exists.
+ */
 Node* gotoPreviousNode(Node* node);
 
+/**
+ * @brief Moves the current pointer of a doubly linked list to the tail node.
+ *
+ * This function sets the `current` pointer of the provided doubly linked list
+ * to the `tail` node. If the list or its tail is `NULL`, it prints an error message
+ * and does not modify the `current` pointer.
+ *
+ * @param list A pointer to the doubly linked list structure.
+ *
+ * @note The function assumes that the `doubleLinkedList` structure contains
+ *       at least the following fields:
+ *       - `tail`: A pointer to the last node in the list.
+ *       - `current`: A pointer to the current node in the list.
+ * 
+ * @pre The `list` and `list->tail` must not be `NULL`.
+ * @post If the preconditions are met, `list->current` will point to `list->tail`.
+ */
+void gotoTail(doubleLinkedList* list);
+
+// Function to insert a node after the current node
+/**
+ * @brief Inserts a new node after the current node in the list.
+ *
+ * @param[in, out] list Pointer to the doubly linked list.
+ * @param[in] data Data to insert into the new node.
+ */
+ /**
+  * @brief Moves the current pointer to the tail of the list.
+  *
+  * @param[in, out] list Pointer to the doubly linked list.
+  */
+void insertAfter(doubleLinkedList* list, int newdata);
+
+/**
+ * @brief Deletes the current node from the doubly linked list.
+ *
+ * @param[in, out] head Pointer to the head of the list.
+ * @param[in] current Pointer to the current node to delete.
+ */
+
+//this is to delete the node that is currently being used, i.e the currentnode and then point the right pointer to one another
+void deletecurr(Node** head, Node* current);
+
+/**
+ * @brief Inserts a new node with the specified data before the given position in the list.
+ *
+ * @param[in, out] head Pointer to the head of the list.
+ * @param[in] newData The data for the new node.
+ * @param[in] currpos The position before which to insert the new node.
+ */
+//insertbefore(newdata) so you will add a newnode in the position before the position of the current node
+//essentially if the position of the currentnode is 3 i have to insert the newbode at 2
+//always have to remember that for linked list it starts at 1 instead of 0
+void insertbeforecurr(Node** head, int newData, int currpos); 
+
+/**
+ * @brief Displays the data in the doubly linked list. FOR TESTING
+ *
+ * @param[in] head Pointer to the head of the list.
+ */
+void displayList(Node* head);
 #endif
