@@ -6,4 +6,5 @@ Node* createNode(int data);
 int getData(Node* node);
 Node* gotoNextNode(Node* node);
 Node* gotoPreviousNode(Node* node);
+
 #endif

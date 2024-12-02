@@ -23,10 +23,27 @@ Node* createNode(int data) {
     return newNode;
 }
 
+/**
+ * @brief Retrieves the data associated with current node.
+ *
+ * This function gets data associated with current node and returns its value.
+ *
+ * @param node A pointer to the node where data is to be retrieved.
+ * @return The data stored in the node.
+ */
 int getData(Node* node) {
     return node -> data;
 }
 
+/**
+ * @brief Sets current node to the successor of current.
+ *
+ * This function checks if the `next` pointer of the given node is `NULL`. If it is `NULL`, 
+ * it returns the current node. Otherwise, it sets current node to the successor of current.
+ *
+ * @param node A pointer to the current node.
+ * @return A pointer to the next node, or the current node if no next node exists.
+ */
 Node* gotoNextNode(Node* node){
     if(node->next == NULL){
         return node;
