@@ -5,35 +5,58 @@
 
 
 int main() {
-  
-    // Sample usage of the doubly linked list and
-    // traversal functions
-    Node* head = createNode(1);
-    Node* second = createNode(2);
-    Node* third = createNode(3);
+    // Create a doubly linked list
+    doubleLinkedList* list = createDoubleLinkedList();
+    printf("Doubly linked list created.\n");
 
-    head->next = second;
-    second->prev = head;
-    second->next = third;
-    third->prev = second;
+    // Insert nodes into the list
+    gotoHead(list);
+    printf("Inserting nodes after head.\n");
+    insertAfter(list, 10);  // Insert 10 after head
+    insertAfter(list, 20);  // Insert 20 after current node
+    insertAfter(list, 30);  // Insert 30 after current node
 
-    printf("head data is: %d\n", getData(head));
-    printf("next one is: %d\n", getData(gotoNextNode(head)));
-    printf("one after is: %d\n", getData(gotoNextNode(second)));
+    // Display the list
+    printf("List after inserting nodes:\n");
+    displayList(list->head->next); // Skip the dummy head node
 
-    // test for previous node
-    
-  /*  printf("head data is: %d\n", getData(head));
-    printf("the previous one is: %d\n",gotoPreviousNode(head));
-    printf("the previous one of this is: %d\n ", gotoPreviousNode(second));
-    printf("the one before the third: %d \n", gotoPreviousNode(third));*/
-    // Free memory allocated for nodes
-    free(head);
-    free(second);
-    free(third);
+    // Move to the tail and display data
+    gotoTail(list);
+    printf("Current node after moving to tail: %d\n", getData(list));
+
+    // Move to the previous node and display data
+    gotoPreviousNode(list);
+    printf("Current node after moving to previous: %d\n", getData(list));
+
+    // Move to the next node and display data
+    gotoNextNode(list);
+    printf("Current node after moving to next: %d\n", getData(list));
+
+    // Delete the current node
+    printf("Deleting current node.\n");
+    deletecurr(&list->head, list->current);
+    displayList(list->head->next); // Skip the dummy head node
+
+    // Insert a node before the current position
+    printf("Inserting node with data 25 before current position.\n");
+    insertbeforecurr(&list->head, 25, 2);
+    displayList(list->head->next); // Skip the dummy head node
+
+    // Clean up: delete the entire list
+    printf("Deleting the entire list.\n");
+    while (list->head->next != list->tail) {
+        deletecurr(&list->head, list->head->next); // Delete each node except dummy head and tail
+    }
+
+    // Free the dummy head and tail nodes
+    free(list->head);
+    free(list->tail);
+    free(list);
+    printf("Doubly linked list deleted.\n");
 
     return 0;
 }
+
 
 
 

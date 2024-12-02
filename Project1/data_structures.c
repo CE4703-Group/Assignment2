@@ -93,38 +93,59 @@ int getData(doubleLinkedList* list) {
  * This function checks if the `next` pointer of the given node is `NULL`. If it is `NULL`, 
  * it returns the current node. Otherwise, it sets current node to the successor of current.
  *
- * @param node A pointer to the current node.
+ * @param list A pointer to the doubly linked list structure.
  * @return A pointer to the next node, or the current node if no next node exists.
  */
-Node* gotoNextNode(Node* node){
-    if(node->next == NULL){
-        return node;
-    }else{
-        return node->next;
+void gotoNextNode(doubleLinkedList* list){
+    if(list->current->next != NULL){
+        list->current = list->current->next;
     }
 }
 
 /**
- * @brief Sets current node to the predecessor of current.
+ * @brief Sets current node to the predeccessor of current.
  *
- * This function checks if the `prev` pointer of the given node is `NULL`. If it is `NULL`, 
- * it returns the current node. Otherwise, it sets current node to the predecessor of current.
- *
- * @param node A pointer to the current node.
- * @return A pointer to the previous node, or the current node if no previous node exists.
+ * This function checks if the `prev` pointer of the given node is `NULL`. If it is `NULL`,
+ * it returns the current node. Otherwise, it sets current node to the predeccessor of current.
+ * 
+ * @param list A pointer to the doubly linked list structure.
+ * @return A pointer to the prev node, or the current node if no prev node exists.
  */
-Node* gotoPreviousNode(Node* node) {
-    if (node->prev == NULL) {
-        return node;
-    }
 
-    else {
-        return node->prev;
+void gotoPreviousNode(doubleLinkedList* list) {
+    if(list->current->prev != NULL){
+        list->current = list->current->prev;
     }
 }
-//void gotoHead(Node* node) {
-//    
-//}
+
+/**
+ * @brief Moves the current pointer of a doubly linked list to the head node.
+ *
+ * This function sets the `current` pointer of the provided doubly linked list
+ * to the `head` node. If the list or its head is `NULL`, it prints an error message
+ * and does not modify the `current` pointer.
+ *
+ * @param list A pointer to the doubly linked list structure.
+ *
+ * @note The function assumes that the `doubleLinkedList` structure contains
+ *       at least the following fields:
+ *       - `head`: A pointer to the last node in the list.
+ *       - `current`: A pointer to the current node in the list.
+ * 
+ * @pre The `list` and `list->head` must not be `NULL`.
+ * @post If the preconditions are met, `list->current` will point to `list->head`.
+ */
+void gotoHead(doubleLinkedList* list) {
+    if (list == NULL || list->head == NULL) { 
+        // Check if list or tail doesn't exist
+        printf("List or head doesn't exist.\n");
+        return;
+    }else{
+        // Set current node to tail
+        list->current = list->head;
+        printf("Current node set to head.\n");
+    }
+}
 
 // Function to set the current node to the tail
 
@@ -149,12 +170,12 @@ void gotoTail(doubleLinkedList* list) {
     // Precondition check
     if (list == NULL || list->tail == NULL) { // Check if list or tail doesn't exist
         printf("List or tail doesn't exist.\n");
-        return;
+    }else{
+        // Set current node to tail
+        list->current = list->tail;
+        printf("Current node set to tail.\n");
     }
-
-    // Set current node to tail
-    list->current = list->tail;
-    printf("Current node set to tail.\n");
+    
 }
 
 // Function to insert a node after the current node

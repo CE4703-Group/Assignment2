@@ -62,21 +62,42 @@ int getData(doubleLinkedList* list);
  * This function checks if the `next` pointer of the given node is `NULL`. If it is `NULL`, 
  * it returns the current node. Otherwise, it sets current node to the successor of current.
  *
- * @param node A pointer to the current node.
- * @return A pointer to the next node, or the current node if no next node exists.
+ * @param list A pointer to the doubly linked list structure.
  */
-Node* gotoNextNode(Node* node);
+
+void gotoNextNode(doubleLinkedList* list);
 
 /**
- * @brief Sets current node to the predecessor of current.
+ * @brief Sets current node to the predeccessor of current.
  *
- * This function checks if the `prev` pointer of the given node is `NULL`. If it is `NULL`, 
- * it returns the current node. Otherwise, it sets current node to the predecessor of current.
- *
- * @param node A pointer to the current node.
- * @return A pointer to the previous node, or the current node if no previous node exists.
+ * This function checks if the `prev` pointer of the given node is `NULL`. If it is `NULL`,
+ * it returns the current node. Otherwise, it sets current node to the predeccessor of current.
+ * 
+ * @param list A pointer to the doubly linked list structure.
  */
-Node* gotoPreviousNode(Node* node);
+
+void gotoPreviousNode(doubleLinkedList* list);
+
+/**
+ * @brief Moves the current pointer of a doubly linked list to the head node.
+ *
+ * This function sets the `current` pointer of the provided doubly linked list
+ * to the `head` node. If the list or its head is `NULL`, it prints an error message
+ * and does not modify the `current` pointer.
+ *
+ * @param list A pointer to the doubly linked list structure.
+ *
+ * @note The function assumes that the `doubleLinkedList` structure contains
+ *       at least the following fields:
+ *       - `head`: A pointer to the last node in the list.
+ *       - `current`: A pointer to the current node in the list.
+ * 
+ * @pre The `list` and `list->head` must not be `NULL`.
+ * @post If the preconditions are met, `list->current` will point to `list->head`.
+ */
+void gotoHead(doubleLinkedList* list) {
+    list->current = list->head;
+}
 
 /**
  * @brief Moves the current pointer of a doubly linked list to the tail node.
