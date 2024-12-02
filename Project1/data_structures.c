@@ -39,19 +39,20 @@ doubleLinkedList* createDoubleLinkedList (){
     struct doubleLinkedList* list = (struct doubleLinkedList*)malloc(sizeof(struct doubleLinkedList));
     
     //< allocates memory for head & tail nodes
-    struct Node *headNode = (Node *)malloc(sizeof(Node)); 
-    struct Node *tailNode = (Node *)malloc(sizeof(Node));
+    struct Node *node = (Node *)malloc(sizeof(Node)); 
+ /*   struct Node *tailNode = (Node *)malloc(sizeof(Node));*/
     
 
     //< initalise head & tail nodes
-    headNode -> prev = NULL; // value before head = NULL
-    headNode -> next = tailNode; // creates headNode <-> tailNode
+    //headNode -> prev = NULL; // value before head = NULL
+    //headNode -> next = tailNode; // creates headNode <-> tailNode
 
-    tailNode -> prev = headNode; // value before tailNode points to head
-    tailNode -> next = NULL; // sets node after tail to 0
+    //tailNode -> prev = headNode; // value before tailNode points to head
+    //tailNode -> next = NULL; // sets node after tail to 0
 
-    list -> head = headNode; // links head to its node
-    list -> tail = tailNode; // links tail to its node
+    list -> head = node; // links head to its node
+    list -> tail = node; // links tail to its node
+    list->current = node;
 
     return list; 
 }
@@ -243,10 +244,10 @@ void deletecurr(Node** head, Node* current) {
         return;
     } 
 
-    if (current == NULL) {
-        printf("Nothing to delete :( ");
-        return;
-    } 
+    //if (current == NULL) {
+    //    printf("Nothing to delete :( ");
+    //    return;
+    //}
 
     if (current->prev != NULL) {
         //printf("not deleting head or tail node \n");
@@ -278,14 +279,14 @@ void deletecurr(Node** head, Node* current) {
 //essentially if the position of the currentnode is 3 i have to insert the newbode at 2
 //always have to remember that for linked list it starts at 1 instead of 0
 void insertbeforecurr(Node** head, int newData, int currpos) {
-    Node* newNode;
+    Node* newNode = (Node*)malloc(sizeof(Node)); // Allocate memory
     if (currpos < 1) {
         printf("not allowed");
         return;
     }
    // int newpos;
     if (currpos == 1) { //this is for when the data that the current pointer is pointing to is the head i.e 1
-        newNode = createNode(newData);
+        newNode->data = newData;
         newNode->next = *head;
         newNode->prev = NULL;
 
@@ -308,7 +309,7 @@ void insertbeforecurr(Node** head, int newData, int currpos) {
                 "Position greater than the number of nodes.\n");
             return;
         }
-        newNode = createNode(newData);
+        newNode->data = newData;
         newNode->next = temp;
         newNode->prev = temp->prev;
         if (temp->prev != NULL) { //ie if the there is nothing before the temp

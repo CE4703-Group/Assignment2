@@ -95,9 +95,7 @@ void gotoPreviousNode(doubleLinkedList* list);
  * @pre The `list` and `list->head` must not be `NULL`.
  * @post If the preconditions are met, `list->current` will point to `list->head`.
  */
-void gotoHead(doubleLinkedList* list) {
-    list->current = list->head;
-}
+void gotoHead(doubleLinkedList* list);
 
 /**
  * @brief Moves the current pointer of a doubly linked list to the tail node.
