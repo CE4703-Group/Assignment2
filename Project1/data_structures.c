@@ -39,7 +39,11 @@ Node* gotoPreviousNode(Node* node) {
     if (node->prev == NULL) {
         return node;
     }
+
     else {
         return node->prev;
     }
 }
+//void gotoHead(Node* node) {
+//    
+//}

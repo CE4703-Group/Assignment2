@@ -21,6 +21,12 @@ int main() {
     printf("next one is: %d\n", getData(gotoNextNode(head)));
     printf("one after is: %d\n", getData(gotoNextNode(second)));
 
+    // test for previous node
+    
+  /*  printf("head data is: %d\n", getData(head));
+    printf("the previous one is: %d\n",gotoPreviousNode(head));
+    printf("the previous one of this is: %d\n ", gotoPreviousNode(second));
+    printf("the one before the third: %d \n", gotoPreviousNode(third));*/
     // Free memory allocated for nodes
     free(head);
     free(second);
