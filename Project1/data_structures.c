@@ -21,6 +21,7 @@ typedef struct doubleLinkedList {
     Node* head;    // Pointer to the head
     Node* tail;    // Pointer to the tail
     Node* current; // Pointer to the current node
+    int count;
 } doubleLinkedList;
 
 /** 
