@@ -33,7 +33,7 @@ int checkInput(int min, int max){
     int tempMin = min - 1; 
     int tempMax = max + 1;
 
-    printf("Input: %d", &choice);   
+    printf("Input: %d", choice);   
 
     while(valid == false){
         if(choice < tempMax && choice > tempMin ){
