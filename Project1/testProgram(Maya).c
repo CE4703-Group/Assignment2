@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "functions.c" //> link c file with working functions
+#include "double_linked_list.h" //> link c file with working functions
 
 /**
  * @brief defines the structure of the array created 
@@ -49,7 +49,7 @@ int checkInput(int min, int max){
  */
 bool checkNegative(int x){
 
-    bool negative = NULL:
+    bool negative = NULL;
 
     if(x < 0){
         negative = true;
@@ -135,7 +135,7 @@ int main(){
             scanf("Choose the set you want to add the value to. \n");
             s = checkInput(0,9); //checks if index of set is within range
 
-            while (negative == false){
+            while (neagtive == false){
                 scanf("Choose the value you want to add or if you want to terminate process enter a negative value: %d", &elem);
                 neagtive = checkNegative(elem); // set to true if the input was negative
 
@@ -202,7 +202,7 @@ int main(){
 
                     notUsed = false;
 
-                    while (notUsed == fasle){
+                    while (notUsed == false){
 
                         s2 = checkInput(0,9); //sets index of set 2
 
@@ -255,7 +255,7 @@ int main(){
 
                     notUsed = false;
 
-                    while (notUsed == fasle){
+                    while (notUsed == false){
 
                         s2 = checkInput(0,9); //sets index of set 2
 
@@ -308,7 +308,7 @@ int main(){
 
                     notUsed = false;
 
-                    while (notUsed == fasle){
+                    while (notUsed == false){
 
                         s2 = checkInput(0,9); //sets index of set 2
 

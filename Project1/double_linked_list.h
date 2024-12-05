@@ -1,5 +1,5 @@
-#ifndef DATA_STRUCTURES_H
-#define DATA_STRUCTURES_H
+#ifndef DOUBLE_LINKED_LIST_H
+#define DOUBLE_LINKED_LIST_H
 
 
 // A linked list node
