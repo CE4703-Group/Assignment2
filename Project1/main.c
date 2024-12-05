@@ -14,8 +14,6 @@
 #include <stdbool.h>
 #include "double_linked_list.h"
 #include "ordered_set.h"
-#include "double_linked_list.c" //edited by Maya
-#include "ordered_set.c" //edited by Maya
 
 /**
  * @brief defines the structure of the array created 
