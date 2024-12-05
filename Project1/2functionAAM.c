@@ -1,11 +1,29 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "set.h"  
 
-#define NUMBER_ADDED 1          
-#define NUMBER_ALREADY_IN_SET 0  
+#define NUMBER_ADDED 1           /**< Indicates successful addition of an element. */
+#define NUMBER_ALREADY_IN_SET 0  /**< Indicates the element already exists in the set. */
 
-// Function to add an element to an ordered set
+/**
+ * @brief Structure representing an ordered set implemented as a linked list.
+ */
+typedef struct {
+    struct Node* head;      /**< Pointer to the head of the set. */
+} intSet;
+
+/**
+ * @brief Adds a new element to an ordered set.
+ *
+ * This function ensures that the set remains ordered and does not allow duplicate elements.
+ * If the element already exists in the set, it is not added again.
+ *
+ * @param[in,out] s Pointer to the head of the ordered set (linked list).
+ * @param[in] elem The element to be added to the set.
+ * @return int Returns:
+ * - `NUMBER_ADDED` if the element was successfully added.
+ * - `NUMBER_ALREADY_IN_SET` if the element already exists in the set.
+ * - `-1` if memory allocation for the new node failed.
+ */
 int addElement(struct Node** s, int elem) {
     // Allocate memory for a new node
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
@@ -46,13 +64,25 @@ int addElement(struct Node** s, int elem) {
     return NUMBER_ADDED;        // Element added successfully
 }
 
-// Function to compute the intersection of two ordered sets
+/**
+ * @brief Computes the intersection of two ordered sets.
+ *
+ * This function creates a new set that contains the intersection of the two given sets `s1` and `s2`.
+ * The intersection set includes only the elements that are present in both `s1` and `s2`.
+ * Neither `s1` nor `s2` is modified during this operation.
+ *
+ * @param[in] s1 Pointer to the first ordered set.
+ * @param[in] s2 Pointer to the second ordered set.
+ * @return intSet* Pointer to the newly created set containing the intersection of `s1` and `s2`.
+ * Returns `NULL` if memory allocation fails during the operation.
+ */
 intSet* setIntersection(intSet* s1, intSet* s2) {
     // Create a new set to store the intersection result
-    intSet* intersectionSet = createSet();
+    intSet* intersectionSet = (intSet*)malloc(sizeof(intSet));
     if (intersectionSet == NULL) {
         return NULL; // Memory allocation failed
     }
+    intersectionSet->head = NULL; // Initialize the head of the new set
 
     // Traverse the first set (s1)
     struct Node* temp = s1->head;
