@@ -28,10 +28,10 @@ typedef struct {
  */
 int checkInput(int min, int max){
 
-    int choice = NULL;
+    int choice = 0;
     bool valid = false;
-    int tempMin = min--; 
-    int tempMax = max++;
+    int tempMin = min - 1; 
+    int tempMax = max + 1;
 
     printf("Input: %d", &choice);   
 
@@ -185,6 +185,7 @@ int main(){
 
             x = checkInput(0,9); 
 
+            SetsArray[x] = free(SetsArray[x]); //edited by Maya
             SetsArray[x] = deleteOrderedSet(x); //deletes set from array and memory
             break;
         }
