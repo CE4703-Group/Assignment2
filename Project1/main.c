@@ -162,7 +162,7 @@ int main(){
              */
 
 
-            int x = NULL; //input value
+            int x = 0; //input value
 
             scanf("Choose position for the new set 0 to 9 \n");
 
@@ -179,7 +179,7 @@ int main(){
              * 
              */
 
-            int x = NULL;
+            int x = 0;
 
             scanf("Choose position of the set you want to delete 0 to 9 \n"); 
 
