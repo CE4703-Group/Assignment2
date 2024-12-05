@@ -12,8 +12,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-// #include "double_linked_list.h"      //Editided by Maya
+#include "double_linked_list.h"      
 #include "ordered_set.h" 
+#include "double_linked_list.c" //edited by Maya
 
 enum return_value{
     NUMBER_ALREADY_IN_SET,
