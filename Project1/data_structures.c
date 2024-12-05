@@ -37,10 +37,10 @@ typedef struct doubleLinkedList {
 doubleLinkedList* createDoubleLinkedList (){
     
     //< allocate memory for list
-    struct doubleLinkedList* list = (struct doubleLinkedList*)malloc(sizeof(struct doubleLinkedList));
+    doubleLinkedList* list = ( doubleLinkedList*)malloc(sizeof( doubleLinkedList));
     
     //< allocates memory for head & tail nodes
-    struct Node *node = (Node *)malloc(sizeof(Node)); 
+     //Node *node = (Node *)malloc(sizeof(Node)); 
  /*   struct Node *tailNode = (Node *)malloc(sizeof(Node));*/
     
 
@@ -51,9 +51,9 @@ doubleLinkedList* createDoubleLinkedList (){
     //tailNode -> prev = headNode; // value before tailNode points to head
     //tailNode -> next = NULL; // sets node after tail to 0
 
-    list -> head = node; // links head to its node
-    list -> tail = node; // links tail to its node
-    list->current = node;
+    list -> head = NULL; // links head to its node
+    list -> tail = NULL; // links tail to its node
+    list->current = NULL;
 
     return list; 
 }

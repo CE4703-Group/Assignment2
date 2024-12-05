@@ -10,15 +10,28 @@ int main() {
     printf("Doubly linked list created.\n");
 
     // Insert nodes into the list
-    gotoHead(list);
+    Node* newNode = (Node*)malloc(sizeof(Node)); // Allocate memory
+    if (newNode == NULL) { // Check if memory allocation is successful
+        printf("Error: Memory allocation failed for new node.\n");
+        return;
+    }
+
+    // Initialize the new node
+    newNode->data = 10;  // Set the data to the new node
+    newNode->next = NULL;     // Set the next pointer to NULL (updated later)
+    newNode->prev = NULL;
+    list->head = newNode;
+    list->current = newNode;
+    list->tail = newNode;
     printf("Inserting nodes after head.\n");
-    insertAfter(list, 10);  // Insert 10 after head
+    //insertAfter(list, 10);  // Insert 10 after head
     insertAfter(list, 20);  // Insert 20 after current node
+    list->current = list->current->next;
     insertAfter(list, 30);  // Insert 30 after current node
 
     // Display the list
     printf("List after inserting nodes:\n");
-    displayList(list->head->next); // Skip the dummy head node
+    displayList(list->head); // Skip the dummy head node
 
     // Move to the tail and display data
     gotoTail(list);
@@ -35,16 +48,16 @@ int main() {
     // Delete the current node
     printf("Deleting current node.\n");
     deletecurr(&list->head, list->current);
-    displayList(list->head->next); // Skip the dummy head node
+    displayList(list->head); // Skip the dummy head node
 
     // Insert a node before the current position
     printf("Inserting node with data 25 before current position.\n");
     insertbeforecurr(&list->head, 25, 2);
-    displayList(list->head->next); // Skip the dummy head node
+    displayList(list->head); // Skip the dummy head node
 
     // Clean up: delete the entire list
     printf("Deleting the entire list.\n");
-    while (list->head->next != list->tail) {
+    while (list->head != list->tail) {
         deletecurr(&list->head, list->head->next); // Delete each node except dummy head and tail
     }
 

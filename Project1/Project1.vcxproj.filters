@@ -21,9 +21,18 @@
     <ClCompile Include="data_structures.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ordered_set.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="testProgram(Maya).c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ordered_set.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

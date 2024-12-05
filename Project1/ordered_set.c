@@ -8,6 +8,41 @@ typedef struct orderedIntSet {
     int count;
 } orderedIntSet;
 
+/**
+ * @brief Creates an empty ordered set.
+ *creates an empty ordered set where the no of elements is set to 0.
+ * 
+ * @return A pointer to the newly created ordered set.
+ */
+
+
+orderedIntSet* createOrderedSet() {
+    orderedIntSet* set = (orderedIntSet*)malloc(sizeof(orderedIntSet)) ; // allocates memory for the set
+    set->list = createDoubleLinkedList(); // initialising an empty set
+    int count = 0;
+    return set;
+
+ /**
+ * @brief Deletes an ordered set and frees its memory.
+ * the function deletes all the elements in the ordered set from the memory.
+ * @param set A pointer to the ordered set to be deleted.
+ *
+ */
+}
+void deleteOrderedSet(orderedIntSet* set) {
+    Node* current = set->list->head; // setting the current node to the head node
+    while (current) {
+        Node* temp = current;// creating  a temp node to store the current value for deletion
+        current = current->next; 
+        free(temp);// free thememory for the  temp node
+
+    }
+    free(set->list);// free the memory for the linked list
+    free(set); // free the memory for the set
+    
+
+
+}
 
 orderedIntSet* setUnion(orderedIntSet* s1, orderedIntSet* s2){
     orderedIntSet* s3 = s1;
