@@ -1,3 +1,14 @@
+/**
+ * @file double_linked_list.h
+ * 
+ * @authors 
+ * - Aia Al Mansori (23358904)
+ * - Anaswara Johnson (23287322)
+ * - Aishat Yusuff (23362146)
+ * - Maya Niessen (23391731)
+ * - Xuyang Tan (24168033)
+ */
+
 #ifndef DOUBLE_LINKED_LIST_H
 #define DOUBLE_LINKED_LIST_H
 

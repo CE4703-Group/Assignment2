@@ -12,7 +12,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "double_linked_list.h" //> link c file with working functions
+#include "double_linked_list.h"
+#include "ordered_set.h"
 
 /**
  * @brief defines the structure of the array created 

@@ -1,3 +1,14 @@
+/**
+ * @file double_linked_list.c
+ * 
+ * @authors 
+ * - Aia Al Mansori (23358904)
+ * - Anaswara Johnson (23287322)
+ * - Aishat Yusuff (23362146)
+ * - Maya Niessen (23391731)
+ * - Xuyang Tan (24168033)
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -21,7 +32,6 @@ typedef struct doubleLinkedList {
     Node* head;    // Pointer to the head
     Node* tail;    // Pointer to the tail
     Node* current; // Pointer to the current node
-    int count;
 } doubleLinkedList;
 
 /** 
@@ -245,11 +255,6 @@ void deletecurr(Node** head, Node* current) {
         return;
     } 
 
-    //if (current == NULL) {
-    //    printf("Nothing to delete :( ");
-    //    return;
-    //}
-
     if (current->prev != NULL) {
         //printf("not deleting head or tail node \n");
         current->prev->next = current->next;
@@ -300,7 +305,6 @@ void insertbeforecurr(Node** head, int newData, int currpos) {
         printf("at the head\n");
         return;
     }
-        //Node* newNode = createNode(newData);
         Node* temp = *head;
         for (int i = 1; temp != NULL && i < currpos; i++) { //it stops right bfore currpos ie if currpos is 3 it stops at 2 and adds the new node
             temp = temp->next;
@@ -316,9 +320,6 @@ void insertbeforecurr(Node** head, int newData, int currpos) {
         if (temp->prev != NULL) { //ie if the there is nothing before the temp
             temp->prev->next = newNode;
         }
-       /* else {
-            *head = newNode;
-        }*/
         temp->prev = newNode; 
 }
 
