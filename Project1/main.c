@@ -185,7 +185,7 @@ int main(){
 
             x = checkInput(0,9); 
 
-            SetsArray[x] = free(SetsArray[x]); //edited by Maya
+            free(SetsArray[x]); //edited by Maya
             SetsArray[x] = deleteOrderedSet(x); //deletes set from array and memory
             break;
         }
