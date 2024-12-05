@@ -136,25 +136,28 @@ int main(){
     Set* SetsArray[10] = {NULL}; //initilaise all pointers to NULL
     int choice;
 
- 
+    while(true){
+        printf("Enter 1 to CREATE an empty Ordered Set \n");
+        printf("Enter 2 to DELETE an Ordered Set \n");
+        printf("Enter 3 to ADD elements to an Ordered Set \n");
+        printf("Enter 4 to REMOVE Elements from an Ordered Set \n ");
+        printf("Enter 5 to Set INTERSECTION \n");
+        printf("Enter 6 to set UNION \n");
+        printf("Enter 7 to Set DIFFERENCE \n") ;
+        printf("Enter 8 to TERMINATE program \n");
 
-    printf("Enter 1 to CREATE an empty Ordered Set \n");
-    printf("Enter 2 to DELETE an Ordered Set \n");
-    printf("Enter 3 to ADD elements to an Ordered Set \n");
-    printf("Enter 4 to REMOVE Elements from an Ordered Set \n ");
-    printf("Enter 5 to Set INTERSECTION \n");
-    printf("Enter 6 to set UNION \n");
-    printf("Enter 7 to Set DIFFERENCE \n") ;
-    printf("Enter 8 to TERMINATE program \n");
+        printf("Choose an option \n");
 
-    printf("Choose an option \n");
+        choice = checkInput(1,8);
 
-    choice = checkInput(1,8);
+        if(choice == 8){
+            printf("Terminating Program... \n");
+            break;
+        }    
     
 
-
-    switch(choice){
-        case 1:{
+        switch(choice){
+            case 1:{
             /**
              * @brief creates an ordered set
              * @details 
@@ -408,12 +411,14 @@ int main(){
             // printf() print the resulting set here 
 
             break;
-        }
-        case 8: {
 
-            printf("Terminating Program ... "); 
-            break;
+            default: {
+                printf("Invlaid option. Try Again. \n");
+                break;
+            }
         }
+
+            
     }
 
     return 0;
