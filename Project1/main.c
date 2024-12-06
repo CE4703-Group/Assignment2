@@ -31,11 +31,7 @@ int checkInput(int min, int max){
     int choice = 0;
     bool valid = false;
 
-<<<<<<< Updated upstream
     printf("Input a value from %d to %d:", min, max);
-=======
-    printf("Input: ");
->>>>>>> Stashed changes
     scanf("%d", &choice);
 
     while(!valid){
@@ -166,11 +162,7 @@ int main(){
 
                 int x = 0; //input value
 
-<<<<<<< Updated upstream
-            printf("Choose position for the new set 0 to 9 \n");
-=======
                 printf("Choose position for the new set 0 to 9 \n");
->>>>>>> Stashed changes
 
                 x = checkInput(0,9); //checks validity of input
             
