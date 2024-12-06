@@ -64,17 +64,22 @@ int addElement(struct Node** s, int elem) {
     return NUMBER_ADDED;        // Element added successfully
 }
 
+
 /**
  * @brief Computes the intersection of two ordered sets.
  *
- * This function creates a new set that contains the intersection of the two given sets `s1` and `s2`.
- * The intersection set includes only the elements that are present in both `s1` and `s2`.
+ * Creates a new set containing the intersection of two given ordered sets `s1` and `s2`.
+ * The intersection includes only the elements present in both sets.
  * Neither `s1` nor `s2` is modified during this operation.
  *
- * @param[in] s1 Pointer to the first ordered set.
- * @param[in] s2 Pointer to the second ordered set.
+ * Behavior:
+ * - If both sets are empty or have no common elements, the result is an empty set.
+ * - If memory allocation fails during the operation, the function returns `NULL`.
+ *
+ * @param[in] s1 Pointer to the first ordered set (linked list).
+ * @param[in] s2 Pointer to the second ordered set (linked list).
  * @return intSet* Pointer to the newly created set containing the intersection of `s1` and `s2`.
- * Returns `NULL` if memory allocation fails during the operation.
+ *         - Returns `NULL` if memory allocation fails.
  */
 intSet* setIntersection(intSet* s1, intSet* s2) {
     // Create a new set to store the intersection result
@@ -84,20 +89,34 @@ intSet* setIntersection(intSet* s1, intSet* s2) {
     }
     intersectionSet->head = NULL; // Initialize the head of the new set
 
-    // Traverse the first set (s1)
-    struct Node* temp = s1->head;
-    while (temp != NULL) {
-        // Check if the current element in s1 exists in s2
-        if (isElementInSet(s2, temp->data)) {
-            // Add the element to the intersection set
-            if (addElement(&(intersectionSet->head), temp->data) == -1) {
-                printf("Error: Memory allocation failed while adding an element.\n");
-                free(intersectionSet); // Free memory for the intersection set
-                return NULL;           // Return NULL on failure
-            }
+    // Pointers to traverse the two sets
+    struct Node* ptr1 = s1->head; // Pointer for the first set
+    struct Node* ptr2 = s2->head; // Pointer for the second set
+
+    // Traverse both sets simultaneously to find common elements
+    while (ptr1 != NULL && ptr2 != NULL) { //ptr1 and 2 is s1 and s2
+        if (ptr1->data < ptr2->data) {
+            // Move the pointer in the first set 
+            ptr1 = ptr1->next;
         }
-        temp = temp->next; // Move to the next node in s1
+        else if (ptr1->data > ptr2->data) {
+            // Move the pointer in the second set 
+            ptr2 = ptr2->next;
+        }
+        else {
+            // if Elements are equal, add to the intersection set
+            if (addElement(&(intersectionSet->head), ptr1->data) == -1) {
+                // Memory allocation failed while adding an element
+                printf("Error: Memory allocation failed while adding an element.\n");
+                free(intersectionSet); // Free memory allocated for the intersection set
+                return NULL;
+            }
+            // Move both pointers forward
+            ptr1 = ptr1->next;
+            ptr2 = ptr2->next;
+        }
     }
 
     return intersectionSet; // Return the resulting intersection set
 }
+
