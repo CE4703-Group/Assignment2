@@ -238,7 +238,7 @@ int main(){
                         
                 }
             }
-            printToStdout(s); 
+            printToStdout(setsArray[s]); 
             break;
         }
             
@@ -270,26 +270,25 @@ int main(){
 
             } else {
                 while(delValid == negative){
-                    del = removeElement(setsArray[s],elem); //returns if element was added or was akready in set
+                    removeElement(setsArray[s],elem); //returns if element was added or was akready in set
+                    // if(del == 3){
+                    //     printf("Number added to set!");
+                    //     delValid = true; 
 
-                    if(del == 3){
-                        printf("Number added to set!");
-                        delValid = true; 
-
-                    } else if(del == 0){
-                        printf("Number already in set. Choose a different value.");
-                    }
+                    // } else if(del == 0){
+                    //     printf("Number already in set. Choose a different value.");
+                    // }
 
                 }
             }
                         
             
-            printToStdout(s); 
+            printToStdout(setsArray[s]); 
             break;
 
         }
         
-        case 5:
+        case 5:{
             /**
              * @brief sets intersection
              * @details
@@ -320,7 +319,7 @@ int main(){
                         if( s1 == s2){
                             printf("Set has already been selected, choose another."); //if s1 and s2 are the same, goes back to loop
                         } else {
-                            notUsed == true; // if s1 and s2 are different, leaves s2 as is and terminates loop
+                            notUsed = true; // if s1 and s2 are different, leaves s2 as is and terminates loop
                         }
                     }      
                 } else {
@@ -332,16 +331,16 @@ int main(){
                         if(s1 == s3 || s2 == s3) {
                             printf("Set has already been selected, choose another."); // if set is the same as either one of set 2 or 1, loops back
                         } else {
-                            notUsed == true; // if s3 isn't s1 or s2, sets notUsed to true
+                            notUsed = true; // if s3 isn't s1 or s2, sets notUsed to true
                         }
                     }
                 }  
             }
-            setsArray[s3] = setIntersection(s1,s2); //finds the intersection and stored into s3
-            printToStdout(s3);
+            setsArray[s3] = setIntersection(setsArray[s1],setsArray[s2]); //finds the intersection and stored into s3
+            printToStdout(setsArray[s3]);
             break;           
-        
-        case 6:
+        }
+        case 6:{
             /**
              * @brief set union
              * @details 
@@ -372,7 +371,7 @@ int main(){
                         if( s1 == s2){
                             printf("Set has already been selected, choose another."); //if s1 and s2 are the same, goes back to loop
                         } else {
-                            notUsed == true; // if s1 and s2 are different, leaves s2 as is and terminates loop
+                            notUsed = true; // if s1 and s2 are different, leaves s2 as is and terminates loop
                         }
                     }      
                 } else {
@@ -384,17 +383,18 @@ int main(){
                         if(s1 == s3 || s2 == s3) {
                             printf("Set has already been selected, choose another."); // if set is the same as either one of set 2 or 1, loops back
                         } else {
-                            notUsed == true; // if s3 isn't s1 or s2, sets notUsed to true
+                            notUsed = true; // if s3 isn't s1 or s2, sets notUsed to true
                         }
                     }
                 }  
             }
-            setsArray[s3] = setUnion(s1,s2); //finds the intersection and stored into s3
-            printToStdout(s3);
+            setsArray[s3] = setUnion(setsArray[s1],setsArray[s2]); //finds the intersection and stored into s3
+            printToStdout(setsArray[s3]);
 
             break;
+        }
         
-        case 7: 
+        case 7: {
             /**
              * @brief set difference
              * @details 
@@ -425,7 +425,7 @@ int main(){
                         if( s1 == s2){
                             printf("Set has already been selected, choose another."); //if s1 and s2 are the same, goes back to loop
                         } else {
-                            notUsed == true; // if s1 and s2 are different, leaves s2 as is and terminates loop
+                            notUsed = true; // if s1 and s2 are different, leaves s2 as is and terminates loop
                         }
                     }      
                 } else {
@@ -437,15 +437,16 @@ int main(){
                         if(s1 == s3 || s2 == s3) {
                             printf("Set has already been selected, choose another."); // if set is the same as either one of set 2 or 1, loops back
                         } else {
-                            notUsed == true; // if s3 isn't s1 or s2, sets notUsed to true
+                            notUsed = true; // if s3 isn't s1 or s2, sets notUsed to true
                         }
                     }
                 }  
             }
-            setsArray[s3] = setDifference(s1,s2); //finds the intersection and stored into s3
-            printToStdout(s3);
+            setsArray[s3] = setDifference(setsArray[s1],setsArray[s2]); //finds the intersection and stored into s3
+            printToStdout(setsArray[s3]);
 
             break;
+        }
         
         case 8:
             printf("Terminate the program...");

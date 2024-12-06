@@ -16,11 +16,11 @@
 
 
 enum return_value{
-    NUMBER_ALREADY_IN_SET, //0
-    NUMBER_NOT_IN_SET,  //1
-    NUMBER_ADDED, // 2
-    NUMBER_REMOVED, // 3
-    ALLOCATION_ERROR //4
+    NUMBER_ALREADY_IN_SET = 0, //0
+    NUMBER_NOT_IN_SET = 1,  //1
+    NUMBER_ADDED = 2, // 2
+    NUMBER_REMOVED = 3, // 3
+    ALLOCATION_ERROR = 4 //4
 };
 
 
@@ -69,6 +69,7 @@ void deleteOrderedSet(orderedIntSet* set) {
     }
     free(set->list);// free the memory for the linked list
     free(set); // free the memory for the set
+    printf("Ordered set is successfully deleted!\n");
 }
 
 
