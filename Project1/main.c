@@ -140,7 +140,7 @@ int main(){
         printf("Enter 1 to CREATE an empty Ordered Set \n");
         printf("Enter 2 to DELETE an Ordered Set \n");
         printf("Enter 3 to ADD elements to an Ordered Set \n");
-        printf("Enter 4 to REMOVE Elements from an Ordered Set \n ");
+        printf("Enter 4 to REMOVE Elements from an Ordered Set \n");
         printf("Enter 5 to Set INTERSECTION \n");
         printf("Enter 6 to set UNION \n");
         printf("Enter 7 to Set DIFFERENCE \n") ;
@@ -449,7 +449,7 @@ int main(){
         }
         
         case 8:
-            printf("Terminate the program...");
+            printf("Terminate the program...\n");
             break;
 
         default: 

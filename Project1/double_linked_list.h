@@ -55,7 +55,7 @@ doubleLinkedList* createDoubleLinkedList ();
  *
  * @param  head  a double pointer to the head node of the doubly linked list.
  */
-void deleteDoubleLinkedList (Node** head);
+void deleteDoubleLinkedList (doubleLinkedList* list);
 
 /**
  * @brief Retrieves the data associated with current node.

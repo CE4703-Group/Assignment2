@@ -78,14 +78,31 @@ doubleLinkedList* createDoubleLinkedList (){
  *
  * @param  head  a double pointer to the head node of the doubly linked list.
  */
-void deleteDoubleLinkedList (Node** head){
-    Node* temp = *head; //creates a node for the head
-    *head = (*head)->next;  // head becomes the value after the original value
+void deleteDoubleLinkedList (doubleLinkedList* list){
+    if (list == NULL) {
+            printf("List is already NULL. Nothing to delete.\n");
+            return;
+        }
 
-    if (*head != NULL){
-        (*head) -> prev = NULL; 
-    }
-    free(temp); 
+        Node* current = list->head;
+        Node* temp = NULL;
+
+        // Traverse and delete each node
+        while (current != NULL) {
+            temp = current->next; // Store the next node
+            free(current);        // Free the current node
+            current = temp;       // Move to the next node
+        }
+
+        // Reset the list's pointers
+        list->head = NULL;
+        list->tail = NULL;
+        list->current = NULL;
+
+        // Free the list structure itself
+        free(list);
+
+        printf("Doubly linked list deleted successfully.\n");
 }
 
 /**
