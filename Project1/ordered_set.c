@@ -12,7 +12,42 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "double_linked_list.h"
+
+
+
+/**
+ * @brief Checks if a specified element exists in the given ordered integer set.
+ *
+ * This function traverses the linked list representation of the ordered integer set
+ * and checks if the specified data element is present. If the set or its internal
+ * list is NULL or empty, the function returns false.
+ *
+ * @param set Pointer to the ordered integer set to search in.
+ * @param data The integer element to search for in the set.
+ * @return true if the element exists in the set, false otherwise.
+ *
+ * @note The function assumes that the ordered integer set is implemented as a linked list.
+ */
+ // Function to check if an element exists in a set
+bool isElementInSet(orderedIntSet* set, int data) {
+    // Ensure the set is not NULL
+    if (set == NULL || set->list == NULL || set->list->head == NULL) {
+        return false; // Element cannot exist in an empty set
+    }
+
+    // Traverse the linked list in the set
+    Node* current = set->list->head;
+    while (current != NULL) {
+        if (current->data == data) {
+            return true; // Element found
+        }
+        current = current->next;
+    }
+
+    return false; // Element not found
+}
 
 
 enum return_value{

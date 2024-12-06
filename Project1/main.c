@@ -19,9 +19,9 @@
 //  * @brief defines the structure of the array created 
 //  */
 
-// typedef struct {
-//     int* elements; // pointer to dynamic array holding the elements 
-// } Set;
+typedef struct {
+    int* elements; // pointer to dynamic array holding the elements 
+} Set;
 
 /**
  * @brief checks if input is valid and returns the valid input
@@ -214,33 +214,33 @@ int main(){
                 scanf("%d", &s);
                 s = checkInput(0,9); //checks if index of set is within range
 
-            while (negative == false){
-                printf("Choose the value you want to add or if you want to terminate process enter a negative value: ");
-                scanf("%d", &elem);
-                negative = checkNegative(elem); // set to true if the input was negative
+                while (negative == false){
+                    printf("Choose the value you want to add or if you want to terminate process enter a negative value: ");
+                    scanf("%d", &elem);
+                    negative = checkNegative(elem); // set to true if the input was negative
 
-                if (negative == true){
-                    break;
-                } else {
-
-                    while(addValid == negative){
-                        add = addElement(setsArray[s]->list->head, elem); //returns if element was added or was akready in set
-
-                        if(add == 2){
-                            printf("Number added to set!");
-                            addValid = true; 
-
-                        } else if(add == 0){
-                            printf("Number already in set. Choose a different value.");
-                        }
-
-                    }
+                    if (negative == true){
+                        break;
+                    } else {
                         
-                }
+                        while(addValid == negative){
+                            add = addElement(setsArray[s]->list->head, elem); //returns if element was added or was akready in set
+
+                            if(add == 2){
+                                printf("Number added to set!");
+                                addValid = true; 
+
+                            } else if(add == 0){
+                                printf("Number already in set. Choose a different value.");
+                            }
+
+                        }
+                        
+                    }
+                } 
+                printToStdout(setsArray[s]); 
+                break;
             }
-            printToStdout(setsArray[s]); 
-            break;
-        }
             
         case 4:{
             /**
