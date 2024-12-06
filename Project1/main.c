@@ -33,14 +33,14 @@ int checkInput(int min, int max){
     int tempMin = min - 1; 
     int tempMax = max + 1;
 
-    printf("Input:");
+    printf("Input a value from %d to %d:", min, max);
     scanf("%d", &choice);
 
     while(valid == false){
         if(choice < tempMax && choice > tempMin ){
             valid = true; //stops loop if the input is valid
         } else{
-            scanf("Input is invalid, please enter a number from %d to %d:", min, max); //goes back to loop if input is invalid
+            printf("Input is invalid, please enter a number from %d to %d:", min, max); //goes back to loop if input is invalid
             scanf("%d", &choice);
         }
     }
@@ -169,7 +169,7 @@ int main(){
 
             int x = 0; //input value
 
-            scanf("Choose position for the new set 0 to 9 \n");
+            printf("Choose position for the new set 0 to 9 \n");
 
             x = checkInput(0,9); //checks validity of input
             
@@ -318,7 +318,7 @@ int main(){
                         s2 = checkInput(0,9); //sets index of set 2
 
                         if( s1 == s2){
-                            ("Set has already been selected, choose another."); //if s1 and s2 are the same, goes back to loop
+                            printf("Set has already been selected, choose another."); //if s1 and s2 are the same, goes back to loop
                         } else {
                             notUsed == true; // if s1 and s2 are different, leaves s2 as is and terminates loop
                         }
@@ -330,7 +330,7 @@ int main(){
                         s3 = checkInput(0,9); // sets index of set 3
 
                         if(s1 == s3 || s2 == s3) {
-                            ("Set has already been selected, choose another."); // if set is the same as either one of set 2 or 1, loops back
+                            printf("Set has already been selected, choose another."); // if set is the same as either one of set 2 or 1, loops back
                         } else {
                             notUsed == true; // if s3 isn't s1 or s2, sets notUsed to true
                         }
@@ -370,7 +370,7 @@ int main(){
                         s2 = checkInput(0,9); //sets index of set 2
 
                         if( s1 == s2){
-                            ("Set has already been selected, choose another."); //if s1 and s2 are the same, goes back to loop
+                            printf("Set has already been selected, choose another."); //if s1 and s2 are the same, goes back to loop
                         } else {
                             notUsed == true; // if s1 and s2 are different, leaves s2 as is and terminates loop
                         }
@@ -382,7 +382,7 @@ int main(){
                         s3 = checkInput(0,9); // sets index of set 3
 
                         if(s1 == s3 || s2 == s3) {
-                            ("Set has already been selected, choose another."); // if set is the same as either one of set 2 or 1, loops back
+                            printf("Set has already been selected, choose another."); // if set is the same as either one of set 2 or 1, loops back
                         } else {
                             notUsed == true; // if s3 isn't s1 or s2, sets notUsed to true
                         }
@@ -423,7 +423,7 @@ int main(){
                         s2 = checkInput(0,9); //sets index of set 2
 
                         if( s1 == s2){
-                            ("Set has already been selected, choose another."); //if s1 and s2 are the same, goes back to loop
+                            printf("Set has already been selected, choose another."); //if s1 and s2 are the same, goes back to loop
                         } else {
                             notUsed == true; // if s1 and s2 are different, leaves s2 as is and terminates loop
                         }
@@ -435,7 +435,7 @@ int main(){
                         s3 = checkInput(0,9); // sets index of set 3
 
                         if(s1 == s3 || s2 == s3) {
-                            ("Set has already been selected, choose another."); // if set is the same as either one of set 2 or 1, loops back
+                            printf("Set has already been selected, choose another."); // if set is the same as either one of set 2 or 1, loops back
                         } else {
                             notUsed == true; // if s3 isn't s1 or s2, sets notUsed to true
                         }
@@ -446,12 +446,11 @@ int main(){
             printToStdout(s3);
 
             break;
-
-            default: {
+        }
+        default: {
                 printf("Invlaid option. Try Again. \n");
                 break;
             }
-        }
 
             
     }
