@@ -12,8 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "double_linked_list.h"      
-#include "ordered_set.h" 
+#include "double_linked_list.h"
 
 
 enum return_value{
@@ -86,7 +85,7 @@ void deleteOrderedSet(orderedIntSet* set) {
  * - `NUMBER_ALREADY_IN_SET` if the element already exists in the set.
  * - `-1` if memory allocation for the new node failed.
  */
-int addElement(struct Node** s, int elem) {
+int addElement(struct Node* s, int elem) {
     // Allocate memory for a new node
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     if (newNode == NULL) {
@@ -96,20 +95,20 @@ int addElement(struct Node** s, int elem) {
     newNode->next = NULL;    // Initialize the next pointer to NULL
 
     // Check if the list is empty or 'elem' should be inserted at the head
-    if (*s == NULL || (*s)->data > elem) {
+    if (s == NULL || (s)->data > elem) {
         // Check if the element already exists at the head
-        if (*s != NULL && (*s)->data == elem) {
+        if (s != NULL && (s)->data == elem) {
             free(newNode); // Free the memory allocated for the duplicate node
             return NUMBER_ALREADY_IN_SET;
         }
         // Insert the new node at the beginning of the list
-        newNode->next = *s;
-        *s = newNode;
+        newNode->next = s;
+        s = newNode;
         return NUMBER_ADDED; // Element added successfully
     }
 
     // Traverse the list to find the correct position for insertion
-    struct Node* temp = *s;
+    struct Node* temp = s;
     while (temp->next != NULL && temp->next->data < elem) {
         temp = temp->next; // Move to the next node
     }

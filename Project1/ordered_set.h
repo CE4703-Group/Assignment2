@@ -11,6 +11,7 @@
 
 #ifndef ORDERED_SET_H
 #define ORDERED_SET_H
+#include "double_linked_list.h"
 
 
 // Ordered int set structure
@@ -55,7 +56,7 @@ void deleteOrderedSet(orderedIntSet* set);
  * - `NUMBER_ALREADY_IN_SET` if the element already exists in the set.
  * - `-1` if memory allocation for the new node failed.
  */
-int addElement(struct Node** s, int elem);
+int addElement(struct Node* s, int elem);
 
 /**
  * @brief Computes the intersection of two ordered sets.

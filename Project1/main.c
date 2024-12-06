@@ -152,23 +152,26 @@ int main(){
     
 
         switch(choice){
-            case 1:
+            case 1:{
             /**
              * @brief creates an ordered set
              * @details 
              * option prompts user to enter the index for the new array in SetsArray
              */
+                int x = 0;
+                printf("Choose position for the new set (0 to 9): ");
+                x = checkInput(0, 9);
 
+                if (setsArray[x] != NULL) {
+                    printf("Set already exists at index %d. Please delete it first.\n", x);
+                } else {
+                    setsArray[x] = createOrderedSet();
+                    printf("Created an empty set at index %d.\n", x);
+                }
+                break;
+            }
 
-                int x = 0; //input value
-
-                printf("Choose position for the new set 0 to 9 \n");
-
-                x = checkInput(0,9); //checks validity of input
-            
-                setsArray[x] = createOrderedSet(); // creates empty set at specified index
-                break;               
-            case 2:
+            case 2:{
             /**
              * @brief deletes an ordered set
              * @details 
@@ -176,18 +179,21 @@ int main(){
              * 
              */
 
-            int x = 0;
+                int x = 0;
+                printf("Choose position of the set you want to delete (0 to 9): ");
+                x = checkInput(0, 9);
 
-            printf("Choose position of the set you want to delete 0 to 9 \n"); 
-
-            x = checkInput(0,9); 
-
-            deleteOrderedSet(setsArray[x]); //deletes set from array and memory
-            setsArray[x] = NULL; // Reset pointer to NULL after deletion
-            printf("Set at index %d deleted.\n", x);
-            break;
-
-        case 3:
+                if (setsArray[x] == NULL) {
+                    printf("No set exists at index %d.\n", x);
+                } else {
+                    deleteOrderedSet(setsArray[x]);
+                    setsArray[x] = NULL;
+                    printf("Deleted set at index %d.\n", x);
+                }
+                break;
+            }
+            
+            case 3:{
             /**
              * @brief add elements to ordered set
              * @details 
@@ -198,15 +204,15 @@ int main(){
              * 
              */
 
-            bool negative = false; //set to true if input is negative
-            int elem = 0; // input value
-            int s; //variable that holds the index of set 
-            int add; // variable that stores if the value was added or was already in the set
-            bool addValid = false; 
+                bool negative = false; //set to true if input is negative
+                int elem = 0; // input value
+                int s; //variable that holds the index of set 
+                int add; // variable that stores if the value was added or was already in the set
+                bool addValid = false; 
 
-            printf("Choose the set you want to add the value to: ");
-            scanf("%d", &s);
-            s = checkInput(0,9); //checks if index of set is within range
+                printf("Choose the set you want to add the value to: ");
+                scanf("%d", &s);
+                s = checkInput(0,9); //checks if index of set is within range
 
             while (negative == false){
                 printf("Choose the value you want to add or if you want to terminate process enter a negative value: ");
@@ -218,7 +224,7 @@ int main(){
                 } else {
 
                     while(addValid == negative){
-                        add = addElement(setsArray[s],elem); //returns if element was added or was akready in set
+                        add = addElement(setsArray[s]->list->head, elem); //returns if element was added or was akready in set
 
                         if(add == 2){
                             printf("Number added to set!");
@@ -234,8 +240,9 @@ int main(){
             }
             printToStdout(s); 
             break;
+        }
             
-        case 4:
+        case 4:{
             /**
              * @brief removes elements from ordered set
              * @details 
@@ -244,7 +251,6 @@ int main(){
              * For each input, it's reported wether if the input value was removed or wether it is not in the set.
              * Then prints the resulting set. 
             */
-            
             
             bool negative = false; //set to true if input is negative
             int elem = 0; // input value
@@ -280,6 +286,8 @@ int main(){
             
             printToStdout(s); 
             break;
+
+        }
         
         case 5:
             /**
@@ -438,11 +446,16 @@ int main(){
             printToStdout(s3);
 
             break;
+        
+        case 8:
+            printf("Terminate the program...");
+            break;
+
+        default: 
+            printf("Invlaid option. Try Again. \n");
+            break;
+            
         }
-        default: {
-                printf("Invlaid option. Try Again. \n");
-                break;
-            }
 
             
     }
