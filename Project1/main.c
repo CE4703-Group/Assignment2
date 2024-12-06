@@ -1,9 +1,13 @@
-//
-//  main.c
-//  Assignment2
-//
-//  Created by Xuyang on 06/12/2024.
-//
+/**
+ * @file main.c
+ *
+ * @authors
+ * - Aia Al Mansori (23358904)
+ * - Anaswara Johnson (23287322)
+ * - Aishat Yusuff (23362146)
+ * - Maya Niessen (23391731)
+ * - Xuyang Tan (24168033)
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,9 +19,6 @@
 //  * @brief defines the structure of the array created 
 //  */
 
-// typedef struct {
-//     int* elements; // pointer to dynamic array holding the elements 
-// } Set;
 
 /**
  * @brief checks if input is valid and returns the valid input
@@ -248,29 +249,18 @@ int main(){
             int elem = 0; // input value
             int s; //variable that holds the index of set 
             int del; // variable that stores if the value was added or was already in the set
-            bool delValid = false; 
 
-            printf("Choose the set you want to delete the value from: ");
+            printf("Choose the set you want to add the value to: ");
             scanf_s("%d", &s);
-            s = checkInput(0,9); //checks if index of set is within range
-
-            printf("Choose the set you want to remove the value from. \n");
-            s = checkInput(0,9); //checks if index of set is within range
-
-            if (negative == true){
-                break;
-
-            } else {
-                while(delValid == negative){
-                    removeElement(setsArray[s],elem); //returns if element was added or was akready in set
-                    // if(del == 3){
-                    //     printf("Number added to set!");
-                    //     delValid = true; 
-
-                    // } else if(del == 0){
-                    //     printf("Number already in set. Choose a different value.");
-                    // }
-
+            
+            while (negative == false){
+                printf("Choose the value you want to remove or if you want to terminate process enter a negative value: ");
+                scanf_s("%d", &elem);
+                negative = checkNegative(elem); // set to true if the input was negative
+                if (negative == true){
+                    break;
+                } else {
+                    removeElement(setsArray[s], elem); //returns if element was added or was akready in set
                 }
             }
                         
@@ -456,75 +446,6 @@ int main(){
     return 0;
     
 }
-
-
-// previous test for double linked list
-
-// int main() {
-//     // Create a doubly linked list
-//     doubleLinkedList* list = createDoubleLinkedList();
-//     printf("Doubly linked list created.\n");
-
-//     // Insert nodes into the list
-//     Node* newNode = (Node*)malloc(sizeof(Node)); // Allocate memory
-//     if (newNode == NULL) { // Check if memory allocation is successful
-//         printf("Error: Memory allocation failed for new node.\n");
-//         return;
-//     }
-
-//     // Initialize the new node
-//     newNode->data = 10;  // Set the data to the new node
-//     newNode->next = NULL;     // Set the next pointer to NULL (updated later)
-//     newNode->prev = NULL;
-//     list->head = newNode;
-//     list->current = newNode;
-//     list->tail = newNode;
-//     printf("Inserting nodes after head.\n");
-//     //insertAfter(list, 10);  // Insert 10 after head
-//     insertAfter(list, 20);  // Insert 20 after current node
-//     list->current = list->current->next;
-//     insertAfter(list, 30);  // Insert 30 after current node
-
-//     // Display the list
-//     printf("List after inserting nodes:\n");
-//     displayList(list->head); // Skip the dummy head node
-
-//     // Move to the tail and display data
-//     gotoTail(list);
-//     printf("Current node after moving to tail: %d\n", getData(list));
-
-//     // Move to the previous node and display data
-//     gotoPreviousNode(list);
-//     printf("Current node after moving to previous: %d\n", getData(list));
-
-//     // Move to the next node and display data
-//     gotoNextNode(list);
-//     printf("Current node after moving to next: %d\n", getData(list));
-
-//     // Delete the current node
-//     printf("Deleting current node.\n");
-//     deletecurr(&list->head, list->current);
-//     displayList(list->head); // Skip the dummy head node
-
-//     // Insert a node before the current position
-//     printf("Inserting node with data 25 before current position.\n");
-//     insertbeforecurr(&list->head, 25, 2);
-//     displayList(list->head); // Skip the dummy head node
-
-//     // Clean up: delete the entire list
-//     printf("Deleting the entire list.\n");
-//     while (list->head != list->tail) {
-//         deletecurr(&list->head, list->head->next); // Delete each node except dummy head and tail
-//     }
-
-//     // Free the dummy head and tail nodes
-//     free(list->head);
-//     free(list->tail);
-//     free(list);
-//     printf("Doubly linked list deleted.\n");
-
-//     return 0;
-// }
 
 
 
