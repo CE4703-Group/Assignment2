@@ -244,29 +244,18 @@ int main(){
             int elem = 0; // input value
             int s; //variable that holds the index of set 
             int del; // variable that stores if the value was added or was already in the set
-            bool delValid = false; 
 
-            printf("Choose the set you want to delete the value from: ");
+            printf("Choose the set you want to add the value to: ");
             scanf_s("%d", &s);
-            s = checkInput(0,9); //checks if index of set is within range
-
-            printf("Choose the set you want to remove the value from. \n");
-            s = checkInput(0,9); //checks if index of set is within range
-
-            if (negative == true){
-                break;
-
-            } else {
-                while(delValid == negative){
-                    removeElement(setsArray[s],elem); //returns if element was added or was akready in set
-                    // if(del == 3){
-                    //     printf("Number added to set!");
-                    //     delValid = true; 
-
-                    // } else if(del == 0){
-                    //     printf("Number already in set. Choose a different value.");
-                    // }
-
+            
+            while (negative == false){
+                printf("Choose the value you want to remove or if you want to terminate process enter a negative value: ");
+                scanf_s("%d", &elem);
+                negative = checkNegative(elem); // set to true if the input was negative
+                if (negative == true){
+                    break;
+                } else {
+                    removeElement(setsArray[s], elem); //returns if element was added or was akready in set
                 }
             }
                         

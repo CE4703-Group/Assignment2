@@ -212,7 +212,7 @@ orderedIntSet* setIntersection(orderedIntSet* s1, orderedIntSet* s2) {
         }
         else {
             // if Elements are equal, add to the intersection set
-            if (addElement((intersectionSet->list->head), ptr1->data) == -1) {
+            if (addElement(intersectionSet, ptr1->data) == -1) {
                 // Memory allocation failed while adding an element
                 printf("Error: Memory allocation failed while adding an element.\n");
                 free(intersectionSet); // Free memory allocated for the intersection set
@@ -293,14 +293,14 @@ orderedIntSet* setUnion(orderedIntSet* s1, orderedIntSet* s2){
     // Add all elements in s1 to s3
     Node* s1curr = s1->list->head;
     while (s1curr != NULL) {
-        addElement(s3->list->head, getData(s3->list));
+        addElement(s3, s1curr->data);
         s1curr = s1curr->next;
     }
 
     // Add elements from s2 that are not already in s3
     Node* s2curr = s2->list->head;
     while (s2curr != NULL) {
-        addElement(s3->list->head, getData(s3->list));
+        addElement(s3, s2curr->data);
         s2curr = s2curr->next;
     }
 
@@ -338,7 +338,7 @@ orderedIntSet* setDifference(orderedIntSet* s1, orderedIntSet* s2){
             s1curr = s1curr->next;
         }
         if (!hasSameEle){
-            addElement(s3->list->head, getData(s2->list));
+            addElement(s3, s2curr->data);
         }
         s2curr = s2curr->next;
     }
