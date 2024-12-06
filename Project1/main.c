@@ -205,22 +205,38 @@ int main(){
              * 
              */
 
-            int neagtive = false; //set to true if input is negative
-            int elem = NULL; // input value
+            bool negative = false; //set to true if input is negative
+            int elem = 0; // input value
             int s; //variable that holds the index of set 
+            int add; // variable that stores if the value was added or was already in the set
+            bool addValid = false; 
 
-            printff("Choose the set you want to add the value to. \n");
+            printf("Choose the set you want to add the value to: ");
+            scanf("%d", &s);
             s = checkInput(0,9); //checks if index of set is within range
 
-            while (neagtive == false){
-                printf("Choose the value you want to add or if you want to terminate process enter a negative value: ";
-                scanf("%d",&elem)
-                neagtive = checkNegative(elem); // set to true if the input was negative
+            while (negative == false){
+                printf("Choose the value you want to add or if you want to terminate process enter a negative value: ");
+                scanf("%d", &elem);
+                negative = checkNegative(elem); // set to true if the input was negative
 
-                if (neagtive == true){
+                if (negative == true){
                     break;
                 } else {
-                    addElement(s,elem); //returns if element was added or was akready added
+
+                    while(addValid == negative){
+                        add = addElement(s,elem); //returns if element was added or was akready in set
+
+                        if(add == 2){
+                            printf("Number added to set!");
+                            addValid = true; 
+
+                        } else if(add == 0){
+                            printf("Number already in set. Choose a different value.");
+                        }
+
+                    }
+                        
                 }
             }
             printToStdout(s); 
@@ -235,28 +251,43 @@ int main(){
              * For each input, it's reported wether if the input value was removed or wether it is not in the set.
              * Then prints the resulting set. 
             */
+            
+            
+            bool negative = false; //set to true if input is negative
+            int elem = 0; // input value
+            int s; //variable that holds the index of set 
+            int del; // variable that stores if the value was added or was already in the set
+            bool delValid = false; 
 
-           int negative = false; //set to treu if element inputted is negative
-           int elem = NULL; // element being removed from set
-           int s; // idex that specifies the set being dealt with
+            printf("Choose the set you want to delete the value from: ");
+            scanf("%d", &s);
+            s = checkInput(0,9); //checks if index of set is within range
 
-           printf("Choose the set you want to remove the value from. \n");
-           s = checkInput(0,9); //checks if index of set is within range
+            printf("Choose the set you want to remove the value from. \n");
+            s = checkInput(0,9); //checks if index of set is within range
 
-           while (negative == false){
-               printf("Choose the value you want to remove from the set and or if you want to terminate process, enter a negative value: ");
-               scanf("%d", &elem);
-               negative = checkNegative(elem);
+            if (negative == true){
+                break;
 
-               if(negative == true){
-                  break;
-               } else {
-                  removeElement(s, elem);
-               }
-           }
+            } else {
+                while(delValid == negative){
+                    del = removeElement(s,elem); //returns if element was added or was akready in set
 
-           printToStdout(s);
-           break;
+                    if(del == 3){
+                        printf("Number added to set!");
+                        delValid = true; 
+
+                    } else if(del == 0){
+                        printf("Number already in set. Choose a different value.");
+                    }
+
+                }
+            }
+                        
+            
+            printToStdout(s); 
+            break;
+        }
         }
         case 5:{
             /**
@@ -307,8 +338,7 @@ int main(){
                 }  
             }
             SetsArray[s3] = setIntersection(s1,s2); //finds the intersection and stored into s3
-            // printf() print the resulting set here
-
+            printToStdout(s3);
             break;           
         }
         case 6:{
@@ -360,7 +390,7 @@ int main(){
                 }  
             }
             SetsArray[s3] = setUnion(s1,s2); //finds the intersection and stored into s3
-            // printf() print the resulting set here
+            printToStdout(s3);
 
             break;
         }
@@ -413,7 +443,7 @@ int main(){
                 }  
             }
             SetsArray[s3] = setDifference(s1,s2); //finds the intersection and stored into s3
-            // printf() print the resulting set here 
+            printToStdout(s3);
 
             break;
 
