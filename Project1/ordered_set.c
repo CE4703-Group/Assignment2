@@ -59,6 +59,19 @@ enum return_value{
     ALLOCATION_ERROR = 4 //4
 };
 
+
+// Ordered int set structure
+/**
+ * @struct orderedIntSet
+ * @brief Represents a Ordered int set structure.
+ */
+//typedef struct orderedIntSet {
+//    // pointer to a doubly linked list
+//    doubleLinkedList* list;
+//    // count of the number of elements in the set
+//    int count;
+//} orderedIntSet;
+
 /**
  * @brief Creates an empty ordered set.
  *creates an empty ordered set where the no of elements is set to 0.
@@ -176,42 +189,32 @@ int addElement(orderedIntSet* set, int elem) {
  *         - Returns `NULL` if memory allocation fails.
  */
 orderedIntSet* setIntersection(orderedIntSet* s1, orderedIntSet* s2) {
-    // Create a new set to store the intersection result
-    orderedIntSet* intersectionSet = (orderedIntSet*)malloc(sizeof(orderedIntSet));
-    if (intersectionSet == NULL) {
-        return NULL; // Memory allocation failed
-    }
-    intersectionSet->list->head = NULL; // Initialize the head of the new set
+    
+    orderedIntSet* s3 = createOrderedSet();
 
-    // Pointers to traverse the two sets
-    struct Node* ptr1 = s1->list->head; // Pointer for the first set
-    struct Node* ptr2 = s2->list->head; // Pointer for the second set
+    Node* s2curr = s2->list->head;
 
-    // Traverse both sets simultaneously to find common elements
-    while (ptr1 != NULL && ptr2 != NULL) { //ptr1 and 2 is s1 and s2
-        if (ptr1->data < ptr2->data) {
-            // Move the pointer in the first set
-            ptr1 = ptr1->next;
-        }
-        else if (ptr1->data > ptr2->data) {
-            // Move the pointer in the second set
-            ptr2 = ptr2->next;
-        }
-        else {
-            // if Elements are equal, add to the intersection set
-            if (addElement(intersectionSet, ptr1->data) == -1) {
-                // Memory allocation failed while adding an element
-                printf("Error: Memory allocation failed while adding an element.\n");
-                free(intersectionSet); // Free memory allocated for the intersection set
-                return NULL;
+    // for every elements in s2, check if there is the same one in s1
+    while(s2curr != NULL){
+        int hasSameEle = 0;
+        Node* s1curr = s1->list->head;
+        while (s1curr != NULL){
+            if(s1curr->data == s2curr->data){
+                hasSameEle = 1;
+                break;
             }
-            // Move both pointers forward
-            ptr1 = ptr1->next;
-            ptr2 = ptr2->next;
+            s1curr = s1curr->next;
         }
+        if (hasSameEle){
+            int a = addElement(s3, s2curr->data);
+            if(a == NUMBER_ADDED){
+                s3->count++;
+            }
+        }
+        s2curr = s2curr->next;
     }
 
-    return intersectionSet; // Return the resulting intersection set
+    return s3;
 }
 
 
@@ -280,14 +283,20 @@ orderedIntSet* setUnion(orderedIntSet* s1, orderedIntSet* s2){
     // Add all elements in s1 to s3
     Node* s1curr = s1->list->head;
     while (s1curr != NULL) {
-        addElement(s3, s1curr->data);
+        int a = addElement(s3, s1curr->data);
+        if(a == NUMBER_ADDED){
+            s3->count++;
+        }
         s1curr = s1curr->next;
     }
 
     // Add elements from s2 that are not already in s3
     Node* s2curr = s2->list->head;
     while (s2curr != NULL) {
-        addElement(s3, s2curr->data);
+        int a = addElement(s3, s2curr->data);
+        if(a == NUMBER_ADDED){
+            s3->count++;
+        }
         s2curr = s2curr->next;
     }
 
@@ -319,13 +328,16 @@ orderedIntSet* setDifference(orderedIntSet* s1, orderedIntSet* s2){
         int hasSameEle = 0;
         Node* s1curr = s1->list->head;
         while (s1curr != NULL){
-            if(s1curr == s2curr){
+            if(s1curr->data == s2curr->data){
                 hasSameEle = 1;
             }
             s1curr = s1curr->next;
         }
         if (!hasSameEle){
-            addElement(s3, s2curr->data);
+            int a = addElement(s3, s2curr->data);
+            if(a == NUMBER_ADDED){
+                s3->count++;
+            }
         }
         s2curr = s2curr->next;
     }
