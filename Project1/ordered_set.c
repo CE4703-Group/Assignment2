@@ -1,7 +1,7 @@
 /**
  * @file ordered_set.c
- * 
- * @authors 
+ *
+ * @authors
  * - Aia Al Mansori (23358904)
  * - Anaswara Johnson (23287322)
  * - Aishat Yusuff (23362146)
@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "double_linked_list.h"
+#include "ordered_set.h"
 
 
 
@@ -64,17 +65,17 @@ enum return_value{
  * @struct orderedIntSet
  * @brief Represents a Ordered int set structure.
  */
-typedef struct orderedIntSet {
-    // pointer to a doubly linked list
-    doubleLinkedList* list;
-    // count of the number of elements in the set
-    int count;
-} orderedIntSet;
+//typedef struct orderedIntSet {
+//    // pointer to a doubly linked list
+//    doubleLinkedList* list;
+//    // count of the number of elements in the set
+//    int count;
+//} orderedIntSet;
 
 /**
  * @brief Creates an empty ordered set.
  *creates an empty ordered set where the no of elements is set to 0.
- * 
+ *
  * @return A pointer to the newly created ordered set.
  */
 orderedIntSet* createOrderedSet() {
@@ -98,7 +99,7 @@ void deleteOrderedSet(orderedIntSet* set) {
     Node* current = set->list->head; // setting the current node to the head node
     while (current) {
         Node* temp = current;// creating  a temp node to store the current value for deletion
-        current = current->next; 
+        current = current->next;
         free(temp);// free thememory for the  temp node
 
     }
@@ -193,11 +194,11 @@ orderedIntSet* setIntersection(orderedIntSet* s1, orderedIntSet* s2) {
     // Traverse both sets simultaneously to find common elements
     while (ptr1 != NULL && ptr2 != NULL) { //ptr1 and 2 is s1 and s2
         if (ptr1->data < ptr2->data) {
-            // Move the pointer in the first set 
+            // Move the pointer in the first set
             ptr1 = ptr1->next;
         }
         else if (ptr1->data > ptr2->data) {
-            // Move the pointer in the second set 
+            // Move the pointer in the second set
             ptr2 = ptr2->next;
         }
         else {
