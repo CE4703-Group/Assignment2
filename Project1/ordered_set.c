@@ -152,7 +152,7 @@ orderedIntSet* setIntersection(orderedIntSet* s1, orderedIntSet* s2) {
         // Check if the current element in s1 exists in s2
         if (isElementInSet(s2, temp->data)) {
             // Add the element to the intersection set
-            if (addElement(&(intersectionSet->list->head), temp->data) == -1) {
+            if (addElement((intersectionSet->list->head), temp->data) == -1) {
                 printf("Error: Memory allocation failed while adding an element.\n");
                 free(intersectionSet); // Free memory for the intersection set
                 return NULL;           // Return NULL on failure
@@ -179,7 +179,7 @@ orderedIntSet* setIntersection(orderedIntSet* s1, orderedIntSet* s2) {
 char* removeElement(orderedIntSet* s, int elem) {
     if (s == NULL || s->list->tail == NULL) { // Check if list or tail doesn't exist
         printf("List or tail doesn't exist.\n");
-        return;
+        return NUMBER_NOT_IN_SET;
     }
     Node* current = s->list->head;
 
@@ -228,14 +228,14 @@ orderedIntSet* setUnion(orderedIntSet* s1, orderedIntSet* s2){
     // Add all elements in s1 to s3
     Node* s1curr = s1->list->head;
     while (s1curr != NULL) {
-        addElement(s3, getData(s1curr));
+        addElement(s3->list->head, getData(s3->list));
         s1curr = s1curr->next;
     }
 
     // Add elements from s2 that are not already in s3
     Node* s2curr = s2->list->head;
     while (s2curr != NULL) {
-        addElement(s3, getData(s2curr));
+        addElement(s3->list->head, getData(s3->list));
         s2curr = s2curr->next;
     }
 
@@ -273,7 +273,7 @@ orderedIntSet* setDifference(orderedIntSet* s1, orderedIntSet* s2){
             s1curr = s1curr->next;
         }
         if (!hasSameEle){
-            addElement(s3, getData(s2curr));
+            addElement(s3->list->head, getData(s2->list));
         }
         s2curr = s2curr->next;
     }
