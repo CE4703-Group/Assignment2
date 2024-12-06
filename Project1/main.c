@@ -15,13 +15,13 @@
 #include "double_linked_list.h"
 #include "ordered_set.h"
 
-/**
- * @brief defines the structure of the array created 
- */
+// /**
+//  * @brief defines the structure of the array created 
+//  */
 
-typedef struct {
-    int* elements; // pointer to dynamic array holding the elements 
-} Set;
+// typedef struct {
+//     int* elements; // pointer to dynamic array holding the elements 
+// } Set;
 
 /**
  * @brief checks if input is valid and returns the valid input
@@ -30,14 +30,16 @@ int checkInput(int min, int max){
 
     int choice = 0;
     bool valid = false;
-    int tempMin = min - 1; 
-    int tempMax = max + 1;
 
+<<<<<<< Updated upstream
     printf("Input a value from %d to %d:", min, max);
+=======
+    printf("Input: ");
+>>>>>>> Stashed changes
     scanf("%d", &choice);
 
-    while(valid == false){
-        if(choice < tempMax && choice > tempMin ){
+    while(!valid){
+        if(choice <= max && choice >= min ){
             valid = true; //stops loop if the input is valid
         } else{
             printf("Input is invalid, please enter a number from %d to %d:", min, max); //goes back to loop if input is invalid
@@ -135,10 +137,10 @@ bool checkNegative(int x){
 
 int main(){
     
-    Set* SetsArray[10] = {NULL}; //initilaise all pointers to NULL
-    int choice;
+    orderedIntSet* setsArray[10]; //initilaise all pointers to NULL
+    int choice = 0;
 
-    while(true){
+    while(choice != 8){
         printf("Enter 1 to CREATE an empty Ordered Set \n");
         printf("Enter 2 to DELETE an Ordered Set \n");
         printf("Enter 3 to ADD elements to an Ordered Set \n");
@@ -148,18 +150,13 @@ int main(){
         printf("Enter 7 to Set DIFFERENCE \n") ;
         printf("Enter 8 to TERMINATE program \n");
 
-        printf("Choose an option \n");
+        printf("Choose an option: \n");
 
-        choice = checkInput(1,8);
-
-        if(choice == 8){
-            printf("Terminating Program... \n");
-            break;
-        }    
+        scanf("%d", &choice);
     
 
         switch(choice){
-            case 1:{
+            case 1:
             /**
              * @brief creates an ordered set
              * @details 
@@ -167,16 +164,19 @@ int main(){
              */
 
 
-            int x = 0; //input value
+                int x = 0; //input value
 
+<<<<<<< Updated upstream
             printf("Choose position for the new set 0 to 9 \n");
+=======
+                printf("Choose position for the new set 0 to 9 \n");
+>>>>>>> Stashed changes
 
-            x = checkInput(0,9); //checks validity of input
+                x = checkInput(0,9); //checks validity of input
             
-            SetsArray[x] = createOrderedSet(); // creates empty set at specified index
-            break;               
-        }
-        case 2: {
+                setsArray[x] = createOrderedSet(); // creates empty set at specified index
+                break;               
+            case 2:
             /**
              * @brief deletes an ordered set
              * @details 
@@ -190,11 +190,12 @@ int main(){
 
             x = checkInput(0,9); 
 
-            free(SetsArray[x]); //edited by Maya
-            SetsArray[x] = deleteOrderedSet(x); //deletes set from array and memory
+            deleteOrderedSet(setsArray[x]); //deletes set from array and memory
+            setsArray[x] = NULL; // Reset pointer to NULL after deletion
+            printf("Set at index %d deleted.\n", x);
             break;
-        }
-        case 3: {
+
+        case 3:
             /**
              * @brief add elements to ordered set
              * @details 
@@ -225,7 +226,7 @@ int main(){
                 } else {
 
                     while(addValid == negative){
-                        add = addElement(s,elem); //returns if element was added or was akready in set
+                        add = addElement(setsArray[s],elem); //returns if element was added or was akready in set
 
                         if(add == 2){
                             printf("Number added to set!");
@@ -241,8 +242,8 @@ int main(){
             }
             printToStdout(s); 
             break;
-        }
-        case 4:{
+            
+        case 4:
             /**
              * @brief removes elements from ordered set
              * @details 
@@ -271,7 +272,7 @@ int main(){
 
             } else {
                 while(delValid == negative){
-                    del = removeElement(s,elem); //returns if element was added or was akready in set
+                    del = removeElement(setsArray[s],elem); //returns if element was added or was akready in set
 
                     if(del == 3){
                         printf("Number added to set!");
@@ -287,9 +288,8 @@ int main(){
             
             printToStdout(s); 
             break;
-        }
-        }
-        case 5:{
+        
+        case 5:
             /**
              * @brief sets intersection
              * @details
@@ -337,11 +337,11 @@ int main(){
                     }
                 }  
             }
-            SetsArray[s3] = setIntersection(s1,s2); //finds the intersection and stored into s3
+            setsArray[s3] = setIntersection(s1,s2); //finds the intersection and stored into s3
             printToStdout(s3);
             break;           
-        }
-        case 6:{
+        
+        case 6:
             /**
              * @brief set union
              * @details 
@@ -389,12 +389,12 @@ int main(){
                     }
                 }  
             }
-            SetsArray[s3] = setUnion(s1,s2); //finds the intersection and stored into s3
+            setsArray[s3] = setUnion(s1,s2); //finds the intersection and stored into s3
             printToStdout(s3);
 
             break;
-        }
-        case 7: {
+        
+        case 7: 
             /**
              * @brief set difference
              * @details 
@@ -442,15 +442,28 @@ int main(){
                     }
                 }  
             }
-            SetsArray[s3] = setDifference(s1,s2); //finds the intersection and stored into s3
+            setsArray[s3] = setDifference(s1,s2); //finds the intersection and stored into s3
             printToStdout(s3);
 
             break;
+<<<<<<< Updated upstream
         }
         default: {
                 printf("Invlaid option. Try Again. \n");
                 break;
             }
+=======
+        
+        case 8:
+            printf("Terminate the program...");
+            break;
+
+        default: 
+            printf("Invlaid option. Try Again. \n");
+            break;
+            
+        }
+>>>>>>> Stashed changes
 
             
     }
