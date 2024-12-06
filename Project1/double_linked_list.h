@@ -55,7 +55,7 @@ doubleLinkedList* createDoubleLinkedList ();
  *
  * @param  head  a double pointer to the head node of the doubly linked list.
  */
-doubleLinkedList* deleteDoubleLinkedList (Node** head);
+void deleteDoubleLinkedList (Node** head);
 
 /**
  * @brief Retrieves the data associated with current node.
@@ -132,13 +132,8 @@ void gotoTail(doubleLinkedList* list);
  * @brief Inserts a new node after the current node in the list.
  *
  * @param[in, out] list Pointer to the doubly linked list.
- * @param[in] data Data to insert into the new node.
+ * @param[in] newdata Data to insert into the new node.
  */
- /**
-  * @brief Moves the current pointer to the tail of the list.
-  *
-  * @param[in, out] list Pointer to the doubly linked list.
-  */
 void insertAfter(doubleLinkedList* list, int newdata);
 
 /**

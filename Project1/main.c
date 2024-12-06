@@ -19,9 +19,9 @@
 //  * @brief defines the structure of the array created 
 //  */
 
-typedef struct {
-    int* elements; // pointer to dynamic array holding the elements 
-} Set;
+// typedef struct {
+//     int* elements; // pointer to dynamic array holding the elements 
+// } Set;
 
 /**
  * @brief checks if input is valid and returns the valid input

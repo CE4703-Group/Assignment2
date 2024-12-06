@@ -18,22 +18,22 @@
  * @struct Node
  * @brief Represents a node in a doubly linked list.
  */
-typedef struct Node {
-    int data;            // Storing data in node
-    struct Node* next;   // Pointer to the next node
-    struct Node* prev;   // Pointer to the previous node
-} Node;
-
-// Double linked list structure
-/**
- * @struct doubleLinkedList
- * @brief Represents a doubly linked list structure.
- */
-typedef struct doubleLinkedList {
-    Node* head;    // Pointer to the head
-    Node* tail;    // Pointer to the tail
-    Node* current; // Pointer to the current node
-} doubleLinkedList;
+//typedef struct Node {
+//    int data;            // Storing data in node
+//    struct Node* next;   // Pointer to the next node
+//    struct Node* prev;   // Pointer to the previous node
+//} Node;
+//
+//// Double linked list structure
+///**
+// * @struct doubleLinkedList
+// * @brief Represents a doubly linked list structure.
+// */
+//typedef struct doubleLinkedList {
+//    Node* head;    // Pointer to the head
+//    Node* tail;    // Pointer to the tail
+//    Node* current; // Pointer to the current node
+//} doubleLinkedList;
 
 /** 
  * @brief this creates an empty list with a head and tail
@@ -78,7 +78,7 @@ doubleLinkedList* createDoubleLinkedList (){
  *
  * @param  head  a double pointer to the head node of the doubly linked list.
  */
-doubleLinkedList* deleteDoubleLinkedList (Node** head){
+void deleteDoubleLinkedList (Node** head){
     Node* temp = *head; //creates a node for the head
     *head = (*head)->next;  // head becomes the value after the original value
 
