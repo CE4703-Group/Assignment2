@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "double_linked_list.h" //edited by Maya
+#include "double_linked_list.h" 
 
 // A linked list node
 /**
