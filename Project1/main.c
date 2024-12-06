@@ -128,7 +128,10 @@ bool checkNegative(int x){
  */
 
 int main(){
-    orderedIntSet* setsArray[10] = {NULL}; //initilaise all pointers to NULL
+    orderedIntSet* setsArray[10]; //initilaise all pointers to NULL
+    for (int i = 0; i < 10; i++) {
+        setsArray[i] = NULL; // Explicit initialization
+    }
     int choice = 0;
 
     while(choice != 8){
@@ -157,12 +160,13 @@ int main(){
                 printf("Choose position for the new set (0 to 9): ");
                 x = checkInput(0, 9);
 
-                if (setsArray[x] != NULL) {
-                    printf("Set already exists at index %d. Please delete it first.\n", x);
-                } else {
+                //if (setsArray[x] != NULL) {
+                   // printf("Set already exists at index %d. Please delete it first.\n", x);
+                //}
+                //if (setsArray[x] == NULL){
                     setsArray[x] = createOrderedSet();
                     printf("Created an empty set at index %d.\n", x);
-                }
+                //}
                 break;
             }
 
