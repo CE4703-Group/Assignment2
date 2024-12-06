@@ -438,24 +438,11 @@ int main(){
             printToStdout(s3);
 
             break;
-<<<<<<< Updated upstream
         }
         default: {
                 printf("Invlaid option. Try Again. \n");
                 break;
             }
-=======
-        
-        case 8:
-            printf("Terminate the program...");
-            break;
-
-        default: 
-            printf("Invlaid option. Try Again. \n");
-            break;
-            
-        }
->>>>>>> Stashed changes
 
             
     }
