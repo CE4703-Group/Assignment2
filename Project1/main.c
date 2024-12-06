@@ -1,9 +1,13 @@
-//
-//  main.c
-//  Assignment2
-//
-//  Created by Xuyang on 06/12/2024.
-//
+/**
+ * @file main.c
+ *
+ * @authors
+ * - Aia Al Mansori (23358904)
+ * - Anaswara Johnson (23287322)
+ * - Aishat Yusuff (23362146)
+ * - Maya Niessen (23391731)
+ * - Xuyang Tan (24168033)
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,9 +19,6 @@
 //  * @brief defines the structure of the array created 
 //  */
 
-// typedef struct {
-//     int* elements; // pointer to dynamic array holding the elements 
-// } Set;
 
 /**
  * @brief checks if input is valid and returns the valid input

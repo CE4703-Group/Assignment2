@@ -59,19 +59,6 @@ enum return_value{
     ALLOCATION_ERROR = 4 //4
 };
 
-
-// Ordered int set structure
-/**
- * @struct orderedIntSet
- * @brief Represents a Ordered int set structure.
- */
-//typedef struct orderedIntSet {
-//    // pointer to a doubly linked list
-//    doubleLinkedList* list;
-//    // count of the number of elements in the set
-//    int count;
-//} orderedIntSet;
-
 /**
  * @brief Creates an empty ordered set.
  *creates an empty ordered set where the no of elements is set to 0.
