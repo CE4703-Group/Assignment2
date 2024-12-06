@@ -97,13 +97,7 @@ orderedIntSet* createOrderedSet() {
  */
 void deleteOrderedSet(orderedIntSet* set) {
     Node* current = set->list->head; // setting the current node to the head node
-    while (current) {
-        Node* temp = current;// creating  a temp node to store the current value for deletion
-        current = current->next;
-        free(temp);// free thememory for the  temp node
-
-    }
-    free(set->list);// free the memory for the linked list
+    deleteDoubleLinkedList(current);
     free(set); // free the memory for the set
     printf("Ordered set is successfully deleted!\n");
 }
@@ -115,51 +109,66 @@ void deleteOrderedSet(orderedIntSet* set) {
  * This function ensures that the set remains ordered and does not allow duplicate elements.
  * If the element already exists in the set, it is not added again.
  *
- * @param[in,out] s Pointer to the head of the ordered set (linked list).
+ * @param[in,out] set  Pointer to the ordered set (linked list).
  * @param[in] elem The element to be added to the set.
  * @return int Returns:
  * - `NUMBER_ADDED` if the element was successfully added.
  * - `NUMBER_ALREADY_IN_SET` if the element already exists in the set.
  * - `-1` if memory allocation for the new node failed.
  */
-int addElement( Node* s, int elem) {
+int addElement(orderedIntSet* set, int elem) {
     // Allocate memory for a new node
     Node* newNode = (Node*)malloc(sizeof(Node));
     if (newNode == NULL) {
-        return -1; // Memory allocation failed
+        return ALLOCATION_ERROR; // Memory allocation failed
     }
-    newNode->data = elem;    // Set the data of the new node
-    newNode->next = NULL;    // Initialize the next pointer to NULL
+    // first element to insert
+    if(set->list->head == NULL){
+        newNode->data = elem;
+        newNode->next = NULL;
+        newNode->prev = NULL;
+        set->list->head = newNode;
+        set->list->tail = newNode;
+        set->count = 1;
+        return NUMBER_ADDED;
+    }else{
+        Node* s = set->list->head;
+        newNode->data = elem;    // Set the data of the new node
+        newNode->next = NULL;    // Initialize the next pointer to NULL
 
-    // Check if the list is empty or 'elem' should be inserted at the head
-    if (s == NULL || (s)->data > elem) {
-        // Check if the element already exists at the head
-        if (s != NULL && (s)->data == elem) {
+        // Check if the list is empty or 'elem' should be inserted at the head
+        if (s == NULL || (s)->data > elem) {
+            // Check if the element already exists at the head
+            if (s != NULL && (s)->data == elem) {
+                free(newNode); // Free the memory allocated for the duplicate node
+                return NUMBER_ALREADY_IN_SET;
+            }
+            // Insert the new node at the beginning of the list
+            newNode->next = s;
+            s = newNode;
+            set->count += 1;
+            return NUMBER_ADDED; // Element added successfully
+        }
+
+        // Traverse the list to find the correct position for insertion
+        struct Node* temp = s;
+        while (temp->next != NULL && temp->next->data < elem) {
+            temp = temp->next; // Move to the next node
+        }
+
+        // Check if 'elem' already exists in the set
+        if (temp->data == elem || (temp->next != NULL && temp->next->data == elem)) {
             free(newNode); // Free the memory allocated for the duplicate node
             return NUMBER_ALREADY_IN_SET;
         }
-        // Insert the new node at the beginning of the list
-        newNode->next = s;
-        s = newNode;
-        return NUMBER_ADDED; // Element added successfully
-    }
 
-    // Traverse the list to find the correct position for insertion
-    struct Node* temp = s;
-    while (temp->next != NULL && temp->next->data < elem) {
-        temp = temp->next; // Move to the next node
+        // Insert the new node in the correct position
+        newNode->next = temp->next; // Link the new node to the next node
+        temp->next = newNode;       // Link the current node to the new node
+        set->count += 1;
+        return NUMBER_ADDED;        // Element added successfully
     }
-
-    // Check if 'elem' already exists in the set
-    if (temp->data == elem || (temp->next != NULL && temp->next->data == elem)) {
-        free(newNode); // Free the memory allocated for the duplicate node
-        return NUMBER_ALREADY_IN_SET;
-    }
-
-    // Insert the new node in the correct position
-    newNode->next = temp->next; // Link the new node to the next node
-    temp->next = newNode;       // Link the current node to the new node
-    return NUMBER_ADDED;        // Element added successfully
+    
 }
 
 
@@ -203,7 +212,7 @@ orderedIntSet* setIntersection(orderedIntSet* s1, orderedIntSet* s2) {
         }
         else {
             // if Elements are equal, add to the intersection set
-            if (addElement(&(intersectionSet->list->head), ptr1->data) == -1) {
+            if (addElement((intersectionSet->list->head), ptr1->data) == -1) {
                 // Memory allocation failed while adding an element
                 printf("Error: Memory allocation failed while adding an element.\n");
                 free(intersectionSet); // Free memory allocated for the intersection set
@@ -354,6 +363,7 @@ void printToStdout(orderedIntSet* s) {
         printf("{}\n");
         return;
     }
+    printf("{ ");
     Node* temp = s->list->head;
     while (temp != NULL) {
         printf("%d ", temp->data);
@@ -362,5 +372,5 @@ void printToStdout(orderedIntSet* s) {
         }
         temp = temp->next;
     }
-    printf("} \n ");
+    printf("}\n");
 }

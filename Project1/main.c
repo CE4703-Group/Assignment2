@@ -1,13 +1,9 @@
-/**
- * @file main.c
- * 
- * @authors 
- * - Aia Al Mansori (23358904)
- * - Anaswara Johnson (23287322)
- * - Aishat Yusuff (23362146)
- * - Maya Niessen (23391731)
- * - Xuyang Tan (24168033)
- */
+//
+//  main.c
+//  Assignment2
+//
+//  Created by Xuyang on 06/12/2024.
+//
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -132,8 +128,7 @@ bool checkNegative(int x){
  */
 
 int main(){
-    
-    orderedIntSet* setsArray[10]; //initilaise all pointers to NULL
+    orderedIntSet* setsArray[10] = {NULL}; //initilaise all pointers to NULL
     int choice = 0;
 
     while(choice != 8){
@@ -208,39 +203,32 @@ int main(){
                 int elem = 0; // input value
                 int s; //variable that holds the index of set 
                 int add; // variable that stores if the value was added or was already in the set
-                bool addValid = false; 
 
                 printf("Choose the set you want to add the value to: ");
                 scanf("%d", &s);
-                s = checkInput(0,9); //checks if index of set is within range
 
-                while (negative == false){
-                    printf("Choose the value you want to add or if you want to terminate process enter a negative value: ");
-                    scanf("%d", &elem);
-                    negative = checkNegative(elem); // set to true if the input was negative
+            while (negative == false){
+                printf("Choose the value you want to add or if you want to terminate process enter a negative value: ");
+                scanf("%d", &elem);
+                negative = checkNegative(elem); // set to true if the input was negative
 
-                    if (negative == true){
-                        break;
-                    } else {
-                        
-                        while(addValid == negative){
-                            add = addElement(setsArray[s]->list->head, elem); //returns if element was added or was akready in set
+                if (negative == true){
+                    break;
+                } else {
+                    add = addElement(setsArray[s], elem); //returns if element was added or was akready in set
 
-                            if(add == 2){
-                                printf("Number added to set!");
-                                addValid = true; 
+                    if(add == 2){
+                        printf("Number added to set!\n");
 
-                            } else if(add == 0){
-                                printf("Number already in set. Choose a different value.");
-                            }
-
-                        }
-                        
+                    } else if(add == 0){
+                        printf("Number already in set. Choose a different value.\n");
                     }
-                } 
-                printToStdout(setsArray[s]); 
-                break;
+                        
+                }
             }
+            printToStdout(setsArray[s]); 
+            break;
+        }
             
         case 4:{
             /**

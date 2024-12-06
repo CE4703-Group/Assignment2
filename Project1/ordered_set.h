@@ -56,7 +56,7 @@ void deleteOrderedSet(orderedIntSet* set);
  * - `NUMBER_ALREADY_IN_SET` if the element already exists in the set.
  * - `-1` if memory allocation for the new node failed.
  */
-int addElement(struct Node* s, int elem);
+int addElement(orderedIntSet* set, int elem);
 
 /**
  * @brief Computes the intersection of two ordered sets.
