@@ -28,14 +28,14 @@ int checkInput(int min, int max){
     bool valid = false;
 
     printf("Input a value from %d to %d:", min, max);
-    scanf("%d", &choice);
+    scanf_s("%d", &choice);
 
     while(!valid){
         if(choice <= max && choice >= min ){
             valid = true; //stops loop if the input is valid
         } else{
             printf("Input is invalid, please enter a number from %d to %d:", min, max); //goes back to loop if input is invalid
-            scanf("%d", &choice);
+            scanf_s("%d", &choice);
         }
     }
     return choice; 
@@ -143,7 +143,7 @@ int main(){
 
         printf("Choose an option: \n");
 
-        scanf("%d", &choice);
+        scanf_s("%d", &choice);
     
 
         switch(choice){
@@ -205,11 +205,11 @@ int main(){
                 int add; // variable that stores if the value was added or was already in the set
 
                 printf("Choose the set you want to add the value to: ");
-                scanf("%d", &s);
+                scanf_s("%d", &s);
 
             while (negative == false){
                 printf("Choose the value you want to add or if you want to terminate process enter a negative value: ");
-                scanf("%d", &elem);
+                scanf_s("%d", &elem);
                 negative = checkNegative(elem); // set to true if the input was negative
 
                 if (negative == true){
@@ -247,7 +247,7 @@ int main(){
             bool delValid = false; 
 
             printf("Choose the set you want to delete the value from: ");
-            scanf("%d", &s);
+            scanf_s("%d", &s);
             s = checkInput(0,9); //checks if index of set is within range
 
             printf("Choose the set you want to remove the value from. \n");

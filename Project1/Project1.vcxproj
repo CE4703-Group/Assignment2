@@ -130,7 +130,6 @@
     <ClCompile Include="data_structures.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="ordered_set.c" />
-    <ClCompile Include="testProgram(Maya).c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structures.h" />
