@@ -33,13 +33,15 @@ int checkInput(int min, int max){
     int tempMin = min - 1; 
     int tempMax = max + 1;
 
-    printf("Input: %d", choice);   
+    printf("Input:");
+    scanf("%d", &choice);
 
     while(valid == false){
         if(choice < tempMax && choice > tempMin ){
             valid = true; //stops loop if the input is valid
         } else{
-            printf("Input is invalid, please enter a number from %d to %d: %d", min, max, &choice); //goes back to loop if input is invalid
+            scanf("Input is invalid, please enter a number from %d to %d:", min, max); //goes back to loop if input is invalid
+            scanf("%d", &choice);
         }
     }
     return choice; 
@@ -184,7 +186,7 @@ int main(){
 
             int x = 0;
 
-            scanf("Choose position of the set you want to delete 0 to 9 \n"); 
+            printf("Choose position of the set you want to delete 0 to 9 \n"); 
 
             x = checkInput(0,9); 
 
@@ -207,11 +209,12 @@ int main(){
             int elem = NULL; // input value
             int s; //variable that holds the index of set 
 
-            scanf("Choose the set you want to add the value to. \n");
+            printff("Choose the set you want to add the value to. \n");
             s = checkInput(0,9); //checks if index of set is within range
 
             while (neagtive == false){
-                scanf("Choose the value you want to add or if you want to terminate process enter a negative value: %d", &elem);
+                printf("Choose the value you want to add or if you want to terminate process enter a negative value: ";
+                scanf("%d",&elem)
                 neagtive = checkNegative(elem); // set to true if the input was negative
 
                 if (neagtive == true){
@@ -237,11 +240,12 @@ int main(){
            int elem = NULL; // element being removed from set
            int s; // idex that specifies the set being dealt with
 
-           scanf("Choose the set you want to remove the value from. \n");
+           printf("Choose the set you want to remove the value from. \n");
            s = checkInput(0,9); //checks if index of set is within range
 
            while (negative == false){
-               scanf("Choose the value you want to remove from the set and or if you want to terminate process, enter a negative value: %d", &elem);
+               printf("Choose the value you want to remove from the set and or if you want to terminate process, enter a negative value: ");
+               scanf("%d", &elem);
                negative = checkNegative(elem);
 
                if(negative == true){
@@ -269,6 +273,7 @@ int main(){
 
             for(int i= 0; i < 3; i++){
                 printf("Choose set %d \n", (i+1));
+                
                 
                 if(i == 0){
                     s1 = checkInput(0,9); //checks if index is within range

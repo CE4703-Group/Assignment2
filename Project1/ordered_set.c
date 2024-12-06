@@ -17,11 +17,11 @@
 #include "double_linked_list.c" //edited by Maya
 
 enum return_value{
-    NUMBER_ALREADY_IN_SET,
-    NUMBER_NOT_IN_SET, 
-    NUMBER_ADDED, 
-    NUMBER_REMOVED, 
-    ALLOCATION_ERROR
+    NUMBER_ALREADY_IN_SET, //0
+    NUMBER_NOT_IN_SET,  //1
+    NUMBER_ADDED, // 2
+    NUMBER_REMOVED, // 3
+    ALLOCATION_ERROR //4
 };
 
 
